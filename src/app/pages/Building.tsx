@@ -10,7 +10,7 @@ import {
 import { SEO } from "../components/SEO";
 import { Breadcrumb } from "../components/Breadcrumb";
 import { building } from "../data/building";
-import buildingFrontImg from "figma:asset/dc0ca19dcde619debb21cd942913e850600d3b62.png";
+import buildingFrontImg from "figma:asset/3d1117e52e415d2627416b07df0c0c4c39eb0674.png";
 import buildingTerraceImg from "figma:asset/f5d1a5760fa4243945e5fe33696439688970d9fa.png";
 import buildingRedImg from "figma:asset/50327e10fa0874324564e7038562eb8b30b891cb.png";
 import corridorColorImg from "figma:asset/341656b9c6aa184dbced406a1209b30a5e192864.png";
@@ -97,12 +97,7 @@ export function Building() {
                   { label: "Niveaux", value: `${building.floors} étages` },
                   { label: "Année de construction", value: building.yearBuilt },
                   { label: "Certification", value: building.certification },
-                  { label: "Parking couvert", value: `${building.parking.indoor} places` },
-                  { label: "Parking extérieur", value: `${building.parking.outdoor} places` },
-                  {
-                    label: "Bornes de recharge",
-                    value: building.parking.electricCharging ? "Oui" : "Non",
-                  },
+                  { label: "Parking", value: `${building.parking.total} places` },
                 ].map(({ label, value }) => (
                   <div key={label} className="flex justify-between text-sm gap-4">
                     <dt className="text-gray-500">{label}</dt>
@@ -239,18 +234,11 @@ export function Building() {
               <h3 className="text-xl font-bold text-[#0F2D52] mb-5">
                 {building.parking.total} places de parking
               </h3>
-              <div className="grid grid-cols-2 gap-4 mb-6">
-                {[
-                  { label: "Places couvertes", value: building.parking.indoor },
-                  { label: "Places extérieures", value: building.parking.outdoor },
-                  { label: "Total", value: building.parking.total },
-                  { label: "Bornes de recharge", value: building.parking.electricCharging ? "Incluses" : "—" },
-                ].map(({ label, value }) => (
-                  <div key={label} className="bg-white rounded-lg p-4 border border-gray-100">
-                    <p className="text-2xl font-bold text-[#0F2D52]">{value}</p>
-                    <p className="text-gray-500 text-xs mt-1">{label}</p>
-                  </div>
-                ))}
+              <div className="grid grid-cols-1 gap-4 mb-6">
+                <div className="bg-white rounded-lg p-4 border border-gray-100">
+                  <p className="text-2xl font-bold text-[#0F2D52]">{building.parking.total}</p>
+                  <p className="text-gray-500 text-xs mt-1">Places de parking</p>
+                </div>
               </div>
               <a
                 href={building.address.googleMaps}

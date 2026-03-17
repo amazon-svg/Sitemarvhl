@@ -15,7 +15,7 @@ import { SEO } from "../components/SEO";
 import { LotCard } from "../components/LotCard";
 import { building } from "../data/building";
 import { lots } from "../data/lots";
-import buildingFrontImg from "figma:asset/d9e88586bb646477e3cea9c85c64ddde08b3c797.png";
+import buildingFrontImg from "figma:asset/6a3f5bf8b62646fdb9bd10021224db52cec44dd1.png";
 import buildingTerraceImg from "figma:asset/f5d1a5760fa4243945e5fe33696439688970d9fa.png";
 import buildingRedImg from "figma:asset/50327e10fa0874324564e7038562eb8b30b891cb.png";
 
@@ -63,22 +63,22 @@ export function Home() {
         aria-label="Présentation du bâtiment Galilée"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-0 items-stretch min-h-[320px]">
+          <div className="grid lg:grid-cols-[5fr_7fr] gap-0 items-stretch min-h-[360px]">
             {/* Texte */}
-            <div className="flex flex-col justify-center py-10 lg:py-14 pr-0 lg:pr-10 z-10">
+            <div className="flex flex-col justify-center py-10 lg:py-14 pr-0 lg:pr-8 z-10">
               <div className="inline-flex items-center gap-2 bg-[#C9A84C]/20 text-[#C9A84C] text-xs font-semibold px-3 py-1.5 rounded-full mb-4 w-fit">
                 <MapPin size={12} />
                 {building.address.full}
               </div>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-3">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight mb-3">
                 Bâtiment{" "}
                 <span className="text-[#C9A84C]">{building.name}</span>
                 <br />
-                <span className="text-2xl sm:text-3xl font-normal text-white/80">
+                <span className="text-xl sm:text-2xl font-normal text-white/80">
                   Bureaux & open-spaces à Lormont
                 </span>
               </h1>
-              <p className="text-white/75 text-sm sm:text-base mb-6 max-w-lg leading-relaxed">
+              <p className="text-white/75 text-sm mb-6 max-w-md leading-relaxed">
                 {building.tagline}. Espaces privatifs et modulables disponibles à la location.
               </p>
               <div className="flex flex-wrap gap-3">
@@ -99,14 +99,14 @@ export function Home() {
             </div>
 
             {/* Photo bâtiment */}
-            <div className="hidden lg:block relative -mr-0">
+            <div className="hidden lg:block relative -mr-8">
               <img
                 src={buildingFrontImg}
                 alt="Bâtiment Galilée – 12 rue Cantelaudette, Lormont"
-                className="w-full h-full object-cover object-[70%_center]"
+                className="w-full h-full object-cover object-[15%_center]"
                 fetchpriority="high"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0F2D52] via-[#0F2D52]/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#0F2D52] via-[#0F2D52]/10 to-transparent" />
             </div>
           </div>
         </div>

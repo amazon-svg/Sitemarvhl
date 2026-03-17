@@ -30,7 +30,7 @@ export function Header() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="flex items-center justify-between h-20 lg:h-24">
           {/* Logo */}
           <Link
             to="/"
@@ -40,7 +40,7 @@ export function Header() {
             <img
               src={logoImg}
               alt="Logo MARVHL"
-              className="h-12 lg:h-14 w-auto object-contain"
+              className="h-16 lg:h-20 w-auto object-contain"
             />
           </Link>
 
