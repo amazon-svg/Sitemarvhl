@@ -14,6 +14,8 @@ export default defineConfig({
     alias: {
       // Alias @ to the src directory
       '@': path.resolve(__dirname, './src'),
+      // Resolve Figma Make asset imports to the local assets directory
+      'figma:asset': path.resolve(__dirname, './src/assets'),
     },
     // Ensure only one copy of React is used across all packages
     dedupe: ['react', 'react-dom', 'react-router'],
