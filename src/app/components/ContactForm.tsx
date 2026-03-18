@@ -29,32 +29,39 @@ export function ContactForm({ defaultLot, defaultRef }: ContactFormProps) {
     reset,
     formState: { errors },
   } = useForm<FormData>({
-    defaultValues: {
-      objet: defaultLot ? `Demande d'information – ${defaultLot} (${defaultRef})` : "",
-      rappel: false,
-    },
-  });
+    const onSubmit = async (data: FormData) => {
+  setStatus("loading");
+  try {
+    const formData = new URLSearchParams();
+    formData.append("form-name", "contact");
+    formData.append("prenom", data.prenom);
+    formData.append("nom", data.nom);
+    formData.append("email", data.email);
+    formData.append("telephone", data.telephone);
+    formData.append("societe", data.societe || "");
+    formData.append("objet", data.objet);
+    formData.append("message", data.message);
+    formData.append("rappel", data.rappel ? "oui" : "non");
+    formData.append("creneau", data.creneau || "");
 
-  const wantsRappel = watch("rappel");
+    const res = await fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: formData.toString(),
+    });
 
-  const onSubmit = async (data: FormData) => {
-    setStatus("loading");
-    try {
-      const res = await fetch(
-        `https://${projectId}.supabase.co/functions/v1/make-server-e7a4acaf/contact`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${publicAnonKey}`,
-          },
-          body: JSON.stringify(data),
-        }
-      );
+    if (!res.ok) {
+      setStatus("error");
+      return;
+    }
 
-      if (!res.ok) {
-        const err = await res.json().catch(() => ({}));
-        console.error("Erreur lors de l'envoi du formulaire:", err);
+    setStatus("success");
+    reset();
+  } catch (e) {
+    console.error("Erreur réseau:", e);
+    setStatus("error");
+  }
+};
         setStatus("error");
         return;
       }
