@@ -12,8 +12,7 @@ interface SEOProps {
 
 const SITE_NAME = "MARVHL – Bâtiment Galilée, Lormont";
 const SITE_URL = "https://www.marvhl.fr";
-const DEFAULT_OG_IMAGE =
-  "https://images.unsplash.com/photo-1768544582207-9238e7a3874b?w=1200&q=80";
+const DEFAULT_OG_IMAGE = "https://www.marvhl.fr/og-image.jpg";
 
 function setMeta(name: string, content: string, attr = "name") {
   let el = document.querySelector<HTMLMetaElement>(`meta[${attr}="${name}"]`);

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router";
 import { Menu, X, Phone } from "lucide-react";
 import { building } from "../data/building";
-import logoImg from "figma:asset/020393562d2638c44029c529b172f40a7804d8c0.png";
+import logoImg from "figma:asset/020393562d2638c44029c529b172f40a7804d8c0.webp";
 
 const navLinks = [
   { to: "/", label: "Accueil" },

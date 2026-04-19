@@ -15,9 +15,9 @@ import { SEO } from "../components/SEO";
 import { LotCard } from "../components/LotCard";
 import { building } from "../data/building";
 import { lots } from "../data/lots";
-import buildingFrontImg from "figma:asset/6a3f5bf8b62646fdb9bd10021224db52cec44dd1.png";
-import buildingTerraceImg from "figma:asset/f5d1a5760fa4243945e5fe33696439688970d9fa.png";
-import buildingRedImg from "figma:asset/50327e10fa0874324564e7038562eb8b30b891cb.png";
+import buildingFrontImg from "figma:asset/6a3f5bf8b62646fdb9bd10021224db52cec44dd1.webp";
+import buildingTerraceImg from "figma:asset/f5d1a5760fa4243945e5fe33696439688970d9fa.webp";
+import buildingRedImg from "figma:asset/50327e10fa0874324564e7038562eb8b30b891cb.webp";
 
 const homeJsonLd = {
   "@context": "https://schema.org",

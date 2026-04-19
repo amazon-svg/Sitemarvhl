@@ -1,14 +1,14 @@
-import lotB101Img from "figma:asset/c58d767ae6f703b00821803607d4cbb5a76295ba.png";
-import lotB102Img from "figma:asset/d27093a10a149cf04a5509fb8d568b0759874e25.png";
-import lotB103Img from "figma:asset/8069bba4b3eb10e73a0314e282250f8bfb31a0a9.png";
-import lotOS1Img1 from "figma:asset/78ca49cada1fdec49718ce4de2c5567e7151082e.png";
-import lotOS1Img2 from "figma:asset/44cc8c63210a019b9956fb080f2cee1372aeaa18.png";
-import lotOS1Img3 from "figma:asset/c71d46b8bd7f28e05c9ebc33adab54b85db50133.png";
-import lotOS2Img1 from "figma:asset/15f1ae53da997955d18af74c7def15f589b52561.png";
-import lotOS2Img2 from "figma:asset/5b9bc2fe29a9928e2dd5bbfb76b0d4d82d37f2ee.png";
-import lotB104Img1 from "figma:asset/81a84734d40d7f8dfd6fcb2543de38cd08ba62a7.png";
-import lotB104Img2 from "figma:asset/6bef01d1cac9f524549078db1474357fae6d7742.png";
-import lotOS3Img from "figma:asset/e89796731819da228a9d9417708569ae3371a09c.png";
+import lotB101Img from "figma:asset/c58d767ae6f703b00821803607d4cbb5a76295ba.webp";
+import lotB102Img from "figma:asset/d27093a10a149cf04a5509fb8d568b0759874e25.webp";
+import lotB103Img from "figma:asset/8069bba4b3eb10e73a0314e282250f8bfb31a0a9.webp";
+import lotOS1Img1 from "figma:asset/78ca49cada1fdec49718ce4de2c5567e7151082e.webp";
+import lotOS1Img2 from "figma:asset/44cc8c63210a019b9956fb080f2cee1372aeaa18.webp";
+import lotOS1Img3 from "figma:asset/c71d46b8bd7f28e05c9ebc33adab54b85db50133.webp";
+import lotOS2Img1 from "figma:asset/15f1ae53da997955d18af74c7def15f589b52561.webp";
+import lotOS2Img2 from "figma:asset/5b9bc2fe29a9928e2dd5bbfb76b0d4d82d37f2ee.webp";
+import lotB104Img1 from "figma:asset/81a84734d40d7f8dfd6fcb2543de38cd08ba62a7.webp";
+import lotB104Img2 from "figma:asset/6bef01d1cac9f524549078db1474357fae6d7742.webp";
+import lotOS3Img from "figma:asset/e89796731819da228a9d9417708569ae3371a09c.webp";
 
 export type LotStatus = "disponible" | "loué" | "réservé";
 export type LotType = "bureau" | "open-space" | "suite";
