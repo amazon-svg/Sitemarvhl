@@ -53,9 +53,13 @@ export function Building() {
       <div className="relative h-[55vh] min-h-[380px]">
         <img
           src={buildingFrontImg}
-          alt="Bâtiment Galilée – 12 rue Cantelaudette, Lormont"
+          alt="Façade du bâtiment Galilée à Lormont (33310) : immeuble de bureaux, 12 rue Cantelaudette"
           className="w-full h-full object-cover"
+          width={1184}
+          height={864}
+          loading="eager"
           fetchpriority="high"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0F2D52]/80 via-[#0F2D52]/30 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
@@ -122,49 +126,67 @@ export function Building() {
             <div className="col-span-2 lg:col-span-1 row-span-2 rounded-xl overflow-hidden" style={{minHeight: '300px'}}>
               <img
                 src={buildingFrontImg}
-                alt="Entrée principale du bâtiment Galilée, Lormont"
+                alt="Entrée principale et parvis du bâtiment Galilée, Lormont"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                width={1184}
+                height={864}
                 loading="lazy"
+                decoding="async"
               />
             </div>
             <div className="rounded-xl overflow-hidden aspect-[4/3]">
               <img
                 src={buildingTerraceImg}
-                alt="Terrasse et espaces verts du bâtiment Galilée"
+                alt="Terrasse et espaces verts autour du bâtiment Galilée, Lormont"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                width={1184}
+                height={864}
                 loading="lazy"
+                decoding="async"
               />
             </div>
             <div className="rounded-xl overflow-hidden aspect-[4/3]">
               <img
                 src={buildingRedImg}
-                alt="Façade extérieure du bâtiment Galilée"
+                alt="Façade rouge latérale du bâtiment Galilée, Lormont (33310)"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                width={1184}
+                height={864}
                 loading="lazy"
+                decoding="async"
               />
             </div>
             <div className="rounded-xl overflow-hidden aspect-[4/3]">
               <img
                 src={corridorColorImg}
-                alt="Couloir lumineux avec verrière zénithale et espaces de détente, bâtiment Galilée"
+                alt="Couloir lumineux avec verrière zénithale et espaces de détente, bâtiment Galilée, Lormont"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                width={1920}
+                height={2560}
                 loading="lazy"
+                decoding="async"
               />
             </div>
             <div className="rounded-xl overflow-hidden aspect-[4/3]">
               <img
                 src={corridorVerriereImg}
-                alt="Verrière et couloir intérieur du bâtiment Galilée"
+                alt="Verrière et circulation intérieure du bâtiment Galilée, Lormont"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                width={1920}
+                height={1440}
                 loading="lazy"
+                decoding="async"
               />
             </div>
             <div className="rounded-xl overflow-hidden aspect-[4/3]">
               <img
                 src={exteriorPalmImg}
-                alt="Environnement végétalisé et espaces verts autour du bâtiment Galilée"
+                alt="Environnement végétalisé et palmiers autour du bâtiment Galilée, Lormont"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                width={1600}
+                height={1200}
                 loading="lazy"
+                decoding="async"
               />
             </div>
           </div>

@@ -102,9 +102,13 @@ export function Home() {
             <div className="hidden lg:block relative -mr-8">
               <img
                 src={buildingFrontImg}
-                alt="Bâtiment Galilée – 12 rue Cantelaudette, Lormont"
+                alt="Façade du bâtiment Galilée à Lormont (33310) : bureaux à louer, 12 rue Cantelaudette"
                 className="w-full h-full object-cover object-[15%_center]"
+                width={1146}
+                height={553}
+                loading="eager"
                 fetchpriority="high"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-[#0F2D52] via-[#0F2D52]/10 to-transparent" />
             </div>
@@ -200,17 +204,23 @@ export function Home() {
               <div className="rounded-xl overflow-hidden aspect-[4/5]">
                 <img
                   src={buildingTerraceImg}
-                  alt="Terrasse et espaces extérieurs du bâtiment Galilée"
+                  alt="Terrasse et espaces extérieurs végétalisés du bâtiment Galilée, Lormont"
                   className="w-full h-full object-cover"
+                  width={1184}
+                  height={864}
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div className="rounded-xl overflow-hidden aspect-[4/5] mt-8">
                 <img
                   src={buildingRedImg}
-                  alt="Entrée du bâtiment Galilée à Lormont"
+                  alt="Entrée principale du bâtiment Galilée, Lormont (33310)"
                   className="w-full h-full object-cover"
+                  width={1184}
+                  height={864}
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>

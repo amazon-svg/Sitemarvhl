@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 
 interface SEOProps {
   title: string;
@@ -14,41 +14,6 @@ const SITE_NAME = "MARVHL – Bâtiment Galilée, Lormont";
 const SITE_URL = "https://www.marvhl.fr";
 const DEFAULT_OG_IMAGE = "https://www.marvhl.fr/og-image.jpg";
 
-function setMeta(name: string, content: string, attr = "name") {
-  let el = document.querySelector<HTMLMetaElement>(`meta[${attr}="${name}"]`);
-  if (!el) {
-    el = document.createElement("meta");
-    el.setAttribute(attr, name);
-    document.head.appendChild(el);
-  }
-  el.setAttribute("content", content);
-}
-
-function setLink(rel: string, href: string) {
-  let el = document.querySelector<HTMLLinkElement>(`link[rel="${rel}"]`);
-  if (!el) {
-    el = document.createElement("link");
-    el.setAttribute("rel", rel);
-    document.head.appendChild(el);
-  }
-  el.setAttribute("href", href);
-}
-
-function upsertJsonLd(id: string, data: object | object[]) {
-  let el = document.querySelector<HTMLScriptElement>(`script[data-seo-id="${id}"]`);
-  if (!el) {
-    el = document.createElement("script");
-    el.setAttribute("type", "application/ld+json");
-    el.setAttribute("data-seo-id", id);
-    document.head.appendChild(el);
-  }
-  el.textContent = JSON.stringify(Array.isArray(data) ? data : [data]);
-}
-
-function removeJsonLd(id: string) {
-  document.querySelector(`script[data-seo-id="${id}"]`)?.remove();
-}
-
 export function SEO({
   title,
   description,
@@ -60,54 +25,44 @@ export function SEO({
 }: SEOProps) {
   const fullTitle = title.includes("MARVHL") ? title : `${title} | MARVHL`;
   const canonicalUrl = canonical ? `${SITE_URL}${canonical}` : undefined;
+  // Les crawlers OG (LinkedIn, Slack...) exigent une URL absolue.
+  // Les imports Vite produisent des chemins relatifs (/assets/xxx.webp) — on préfixe.
+  const ogImageUrl = ogImage.startsWith("http") ? ogImage : `${SITE_URL}${ogImage}`;
+  const jsonLdArr = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : null;
 
-  useEffect(() => {
-    // Title
-    document.title = fullTitle;
+  return (
+    <Helmet>
+      <title>{fullTitle}</title>
+      <meta name="description" content={description} />
+      {noindex && <meta name="robots" content="noindex, nofollow" />}
+      {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
 
-    // Basic meta
-    setMeta("description", description);
-    if (noindex) {
-      setMeta("robots", "noindex, nofollow");
-    } else {
-      document.querySelector('meta[name="robots"]')?.remove();
-    }
+      {/* Open Graph */}
+      <meta property="og:title" content={fullTitle} />
+      <meta property="og:description" content={description} />
+      <meta property="og:type" content={ogType} />
+      <meta property="og:image" content={ogImageUrl} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+      <meta property="og:site_name" content={SITE_NAME} />
+      <meta property="og:locale" content="fr_FR" />
 
-    // Canonical
-    if (canonicalUrl) {
-      setLink("canonical", canonicalUrl);
-    }
+      {/* Twitter */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={fullTitle} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={ogImageUrl} />
 
-    // Open Graph
-    setMeta("og:title", fullTitle, "property");
-    setMeta("og:description", description, "property");
-    setMeta("og:type", ogType, "property");
-    setMeta("og:image", ogImage, "property");
-    setMeta("og:image:width", "1200", "property");
-    setMeta("og:image:height", "630", "property");
-    if (canonicalUrl) setMeta("og:url", canonicalUrl, "property");
-    setMeta("og:site_name", SITE_NAME, "property");
-    setMeta("og:locale", "fr_FR", "property");
+      {/* Geo */}
+      <meta name="geo.region" content="FR-33" />
+      <meta name="geo.placename" content="Lormont" />
+      <meta name="geo.position" content="44.87;-0.52" />
+      <meta name="ICBM" content="44.87, -0.52" />
 
-    // Twitter Card
-    setMeta("twitter:card", "summary_large_image");
-    setMeta("twitter:title", fullTitle);
-    setMeta("twitter:description", description);
-    setMeta("twitter:image", ogImage);
-
-    // Geo
-    setMeta("geo.region", "FR-33");
-    setMeta("geo.placename", "Lormont");
-    setMeta("geo.position", "44.87;-0.52");
-    setMeta("ICBM", "44.87, -0.52");
-
-    // JSON-LD
-    if (jsonLd) {
-      upsertJsonLd("page-jsonld", jsonLd);
-    } else {
-      removeJsonLd("page-jsonld");
-    }
-  }, [fullTitle, description, canonicalUrl, ogImage, ogType, noindex, jsonLd]);
-
-  return null;
+      {jsonLdArr && (
+        <script type="application/ld+json">{JSON.stringify(jsonLdArr)}</script>
+      )}
+    </Helmet>
+  );
 }

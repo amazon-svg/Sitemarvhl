@@ -17,8 +17,12 @@ export function Footer() {
               <div className="inline-block bg-white rounded-xl p-2">
                 <img
                   src={logoImg}
-                  alt="Logo MARVHL"
+                  alt="Logo MARVHL – Bâtiment Galilée, Lormont"
                   className="h-16 w-auto object-contain"
+                  width={1920}
+                  height={1152}
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>

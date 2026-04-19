@@ -4,42 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0F2D52" />
-
-    <!-- SEO de base (surchargé par React via le composant SEO, mais indispensable pour les crawlers et outils qui n'exécutent pas le JS : LinkedIn, WhatsApp, Slack, anciens navigateurs...) -->
-    <title>MARVHL – Bureaux & Open-Spaces à louer à Lormont (Bordeaux) | Bâtiment Galilée</title>
-    <meta name="description" content="Bureaux et open-spaces à louer à Lormont, 20 min de Bordeaux. Zone Franche Urbaine : exonérations fiscales jusqu'à 5 ans. Tout inclus, sans frais d'agence. Location directe propriétaire." />
     <meta name="author" content="SCSi MARVHL" />
-    <link rel="canonical" href="https://www.marvhl.fr/" />
 
-    <!-- Open Graph (LinkedIn, Facebook, WhatsApp, Slack...) -->
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="MARVHL – Bâtiment Galilée, Lormont" />
-    <meta property="og:title" content="MARVHL – Bureaux à louer à Lormont | Bâtiment Galilée" />
-    <meta property="og:description" content="Bureaux et open-spaces à louer à Lormont. Zone Franche Urbaine, exonérations fiscales, tout inclus, sans frais d'agence." />
-    <meta property="og:url" content="https://www.marvhl.fr/" />
-    <meta property="og:image" content="https://www.marvhl.fr/og-image.jpg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content="fr_FR" />
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="MARVHL – Bureaux à louer à Lormont | Bâtiment Galilée" />
-    <meta name="twitter:description" content="Bureaux et open-spaces à louer à Lormont. Zone Franche Urbaine, exonérations fiscales, tout inclus, sans frais d'agence." />
-    <meta name="twitter:image" content="https://www.marvhl.fr/og-image.jpg" />
-
-    <!-- Geo -->
-    <meta name="geo.region" content="FR-33" />
-    <meta name="geo.placename" content="Lormont" />
-    <meta name="geo.position" content="44.87;-0.52" />
-    <meta name="ICBM" content="44.87, -0.52" />
+    <!-- Meta tags par page (title, description, canonical, Open Graph, Twitter Card, geo, JSON-LD page) -->
+    <!-- Injectés au pré-rendu par scripts/prerender.mjs, gérés à l'hydratation par react-helmet-async. -->
+    <!--ssr-head-->
 
     <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-    <!-- Schema.org : données structurées pour Google (RealEstateAgent + LocalBusiness) -->
+    <!-- Schema.org global : identité de l'entreprise (identique sur toutes les pages) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -79,7 +55,7 @@
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root"><!--ssr-outlet--></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
