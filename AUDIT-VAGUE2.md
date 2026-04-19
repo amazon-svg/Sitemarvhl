@@ -54,24 +54,28 @@ Démonstration sur `https://www.marvhl.fr/lot/bureau-21m2-r1-lormont` (21 avr. 2
 
 URL preview Netlify : https://deploy-preview-2--grand-malasada-705f22.netlify.app
 
-### Scores Lighthouse — preview
+### Scores Lighthouse — preview (2026-04-19)
 
-| Métrique           | Mobile (avant → après) | Desktop (avant → après) |
-| ------------------ | ---------------------: | ----------------------: |
-| Performance        | 96 → _TBD_             | 99 → _TBD_              |
-| Accessibilité      | 96 → _TBD_             | 96 → _TBD_              |
-| Bonnes pratiques   | 100 → _TBD_            | 100 → _TBD_             |
-| SEO                | 100 → _TBD_            | 100 → _TBD_             |
+| Métrique           | Mobile (avant → après)    | Desktop (avant → après)    |
+| ------------------ | ------------------------: | -------------------------: |
+| Performance        | 96 → **99** (+3)          | 99 → **100** (+1)          |
+| Accessibilité      | 96 → 96                   | 96 → 96                    |
+| Bonnes pratiques   | 100 → 96 (−4)             | 100 → 100                  |
+| SEO                | 100 → 69 *(faux positif)* | 100 → 69 *(faux positif)*  |
+
+⚠️ **SEO 69 = artefact de la preview Netlify** : la preview envoie un header `x-robots-tag: noindex` (automatique, pour éviter l'indexation Google des branches non-mergées). PSI pénalise −31 points pour ce signal. **Ce header est absent sur www.marvhl.fr → SEO remontera à 100 après merge sur main.** Vérifié par curl le 19 avr. 2026.
 
 ### Core Web Vitals — preview
 
-| Métrique | Mobile (avant → après) | Desktop (avant → après) |
-| -------- | ---------------------: | ----------------------: |
-| LCP      | 2.3s → _TBD_           | 0.6s → _TBD_            |
-| CLS      | 0.00 → _TBD_           | 0.001 → _TBD_           |
-| TBT      | 0ms → _TBD_            | 10ms → _TBD_            |
-| FCP      | 1.7s → _TBD_           | 0.5s → _TBD_            |
-| SI       | 4.2s → _TBD_           | 1.2s → _TBD_            |
+| Métrique | Mobile (avant → après)   | Desktop (avant → après) |
+| -------- | -----------------------: | ----------------------: |
+| LCP      | 2.3s → **1.6s** (−30 %)  | 0.6s → 0.6s             |
+| CLS      | 0.00 → 0.00              | 0.001 → 0.00            |
+| TBT      | 0ms → 90ms               | 10ms → 30ms             |
+| FCP      | 1.7s → **1.0s** (−41 %)  | 0.5s → 0.5s             |
+| SI       | 4.2s → **2.8s** (−33 %)  | 1.2s → 1.1s             |
+
+**Lecture** : les gains majeurs sont sur mobile (LCP, FCP, Speed Index) — directement liés au pré-rendu (pas de JS à exécuter avant d'afficher le contenu) et au `fetchpriority="high"` sur le hero. CLS confirmé à 0 grâce aux dimensions explicites sur `<img>`. TBT augmente légèrement (~90 ms mobile) car react-helmet-async dédoublonne les meta tags à l'hydratation — coût acceptable vu le gain sur les autres axes.
 
 ### Vérifications SSG (automatiques sur preview)
 
