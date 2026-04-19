@@ -52,7 +52,7 @@ Démonstration sur `https://www.marvhl.fr/lot/bureau-21m2-r1-lormont` (21 avr. 2
 
 ## Après déploiement (à compléter post-preview)
 
-<!-- Sera rempli après déploiement de la PR vague-2-prerender sur l'URL preview Netlify -->
+URL preview Netlify : https://deploy-preview-2--grand-malasada-705f22.netlify.app
 
 ### Scores Lighthouse — preview
 
@@ -73,14 +73,29 @@ Démonstration sur `https://www.marvhl.fr/lot/bureau-21m2-r1-lormont` (21 avr. 2
 | FCP      | 1.7s → _TBD_           | 0.5s → _TBD_            |
 | SI       | 4.2s → _TBD_           | 1.2s → _TBD_            |
 
-### Vérifications SSG (à faire sur preview)
+### Vérifications SSG (automatiques sur preview)
 
-- [ ] `curl PREVIEW/nos-lots | grep "<title>"` → titre "Nos lots" (≠ titre home)
-- [ ] `curl PREVIEW/lot/bureau-21m2-r1-lormont | grep "og:title"` → og spécifique au lot
-- [ ] `curl PREVIEW/le-batiment | grep "canonical"` → canonical = `/le-batiment`
-- [ ] Test Open Graph https://www.opengraph.xyz/ sur 2-3 URLs différentes → prévisualisations différentes
-- [ ] Test Rich Results https://search.google.com/test/rich-results sur une page de lot → Schema.org détecté avec données spécifiques au lot
+Toutes validées via curl le 2026-04-19 sur la preview Netlify :
+
+- [x] `/` → title "MARVHL – Bureaux & Espaces à louer à Lormont (33310) | Bâtiment Galilée", canonical `https://www.marvhl.fr/`
+- [x] `/nos-lots/` → title "Nos lots à louer – Bureaux & Open Spaces à Lormont (33310) | MARVHL Galilée", canonical `https://www.marvhl.fr/nos-lots`
+- [x] `/le-batiment/` → title "Bâtiment Galilée à Lormont – Immeuble de bureaux moderne | MARVHL", canonical `https://www.marvhl.fr/le-batiment`
+- [x] `/contact/` → title "Contact – Louer un bureau à Lormont | MARVHL Galilée", canonical `https://www.marvhl.fr/contact`
+- [x] `/lot/bureau-21m2-r1-lormont/` → title "Bureau 21 m² à louer à Lormont (33310) R+1 | MARVHL Bâtiment Galilée", canonical spécifique au lot
+- [x] Chaque `og:image` est en URL absolue (préfixé SITE_URL)
+- [x] Image Header : `loading="eager"` + `fetchpriority="high"` + `decoding="async"` + width/height
+- [x] Image hero Home : mêmes optimisations above-the-fold
+- [x] Images below-fold : `loading="lazy"` + `decoding="async"` + width/height
+
+### Vérifications visuelles (à faire par toi dans le navigateur)
+
+- [ ] Ouvre https://www.opengraph.xyz/ et teste 2-3 URLs preview différentes → prévisualisations différentes (titre/image/description par page)
+- [ ] https://search.google.com/test/rich-results sur une page de lot → Schema.org détecté avec le RealEstateAgent global + données page spécifiques
+- [ ] Navigation rapide sur la preview : rien de cassé visuellement
 
 ### Décisions techniques & ajustements
 
-<!-- À remplir si un arbitrage particulier a dû être fait pendant l'implémentation -->
+- **Choix SSR** : pivot de `vite-react-ssg` (beta, peerDep Router 6) vers un pipeline maison utilisant les APIs SSR officielles de React Router 7 (`createStaticHandler` + `createStaticRouter` + `StaticRouterProvider`). ~100 lignes de code, zéro dépendance ajoutée, stable.
+- **Warning build** : `useLayoutEffect does nothing on the server` apparaît pour ContactForm pendant le render SSR. Non-bloquant, vient d'une dépendance tierce (probablement react-hook-form ou @radix-ui). Le rendu final est correct ; l'hydratation client corrige l'état.
+- **og:image** : SEO.tsx préfixe automatiquement avec `SITE_URL` si le chemin est relatif (les crawlers Open Graph exigent des URLs absolues ; les imports Vite produisent des chemins `/assets/...`).
+- **Trailing slash** : Netlify redirige 301 `/nos-lots → /nos-lots/` automatiquement (pretty URLs). Sans impact SEO (un seul cache-level redirect).
