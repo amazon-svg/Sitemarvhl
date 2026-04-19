@@ -1,7 +1,7 @@
 
-  # Créer un site web
+  # Site Marvhl
 
-  This is a code bundle for Créer un site web. The original project is available at https://www.figma.com/design/1DzoWP4z8emS0N2eychZfZ/Cr%C3%A9er-un-site-web.
+  This is a code bundle for Site Marvhl. The original project is available at https://www.figma.com/design/1DzoWP4z8emS0N2eychZfZ/Site-Marvhl.
 
   ## Running the code
 
