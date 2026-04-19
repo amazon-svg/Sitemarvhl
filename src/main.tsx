@@ -1,7 +1,13 @@
+import { createRoot, hydrateRoot } from "react-dom/client";
+import App from "./app/App.tsx";
+import "./styles/index.css";
 
-  import { createRoot } from "react-dom/client";
-  import App from "./app/App.tsx";
-  import "./styles/index.css";
+const rootEl = document.getElementById("root")!;
 
-  createRoot(document.getElementById("root")!).render(<App />);
-  
+// En prod après pré-rendu, #root contient déjà le HTML SSR → on hydrate.
+// En dev (ou en prod sans pré-rendu), #root est vide → createRoot classique.
+if (rootEl.hasChildNodes()) {
+  hydrateRoot(rootEl, <App />);
+} else {
+  createRoot(rootEl).render(<App />);
+}

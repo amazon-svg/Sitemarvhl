@@ -25,6 +25,9 @@ export function SEO({
 }: SEOProps) {
   const fullTitle = title.includes("MARVHL") ? title : `${title} | MARVHL`;
   const canonicalUrl = canonical ? `${SITE_URL}${canonical}` : undefined;
+  // Les crawlers OG (LinkedIn, Slack...) exigent une URL absolue.
+  // Les imports Vite produisent des chemins relatifs (/assets/xxx.webp) — on préfixe.
+  const ogImageUrl = ogImage.startsWith("http") ? ogImage : `${SITE_URL}${ogImage}`;
   const jsonLdArr = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : null;
 
   return (
@@ -38,7 +41,7 @@ export function SEO({
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content={ogType} />
-      <meta property="og:image" content={ogImage} />
+      <meta property="og:image" content={ogImageUrl} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
@@ -49,7 +52,7 @@ export function SEO({
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={ogImage} />
+      <meta name="twitter:image" content={ogImageUrl} />
 
       {/* Geo */}
       <meta name="geo.region" content="FR-33" />
