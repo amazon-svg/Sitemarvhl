@@ -20,7 +20,6 @@ const TYPE_OPTIONS: { value: LotType | "all"; label: string }[] = [
   { value: "all", label: "Tous les types" },
   { value: "bureau", label: "Bureaux privatifs" },
   { value: "open-space", label: "Open Spaces" },
-  { value: "suite", label: "Suites premium" },
 ];
 
 const STATUS_OPTIONS: { value: LotStatus | "all"; label: string }[] = [
@@ -46,7 +45,7 @@ export function Lots() {
     <>
       <SEO
         title="Nos lots à louer – Bureaux & Open Spaces à Lormont (33310) | MARVHL Galilée"
-        description={`Découvrez nos ${lots.length} lots disponibles à la location dans le bâtiment Galilée à Lormont. Bureaux privatifs, open spaces et suites prestige. ${disponibleCount} lots disponibles.`}
+        description={`Découvrez nos ${lots.length} lots à la location dans le bâtiment Galilée à Lormont : bureaux privatifs et open spaces. ${disponibleCount} lots disponibles, loyer tout inclus, sans frais d'agence.`}
         canonical="/nos-lots"
         jsonLd={lotsJsonLd}
       />
