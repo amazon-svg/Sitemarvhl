@@ -42,9 +42,10 @@ export function LotCard({ lot }: LotCardProps) {
           src={lot.images[0]}
           alt={`${lot.name} – ${typeLabel[lot.type]} de ${lot.surface} m² au bâtiment Galilée, Lormont`}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          loading="lazy"
           width={600}
           height={400}
+          loading="lazy"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
         <div className="absolute top-3 left-3 flex flex-col gap-1.5">

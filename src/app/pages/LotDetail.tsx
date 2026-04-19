@@ -118,9 +118,13 @@ export function LotDetail() {
               <div className="aspect-video bg-gray-100">
                 <img
                   src={lot.images[currentImg]}
-                  alt={`${lot.name} – ${typeLabel[lot.type]} au bâtiment Galilée, Lormont – Vue ${currentImg + 1}`}
+                  alt={`${lot.name} – ${typeLabel[lot.type]} de ${lot.surface} m² au bâtiment Galilée, Lormont – Vue ${currentImg + 1}/${lot.images.length}`}
                   className="w-full h-full object-cover"
+                  width={1184}
+                  height={864}
+                  loading="eager"
                   fetchpriority="high"
+                  decoding="async"
                 />
               </div>
 
@@ -181,7 +185,15 @@ export function LotDetail() {
                       i === currentImg ? "border-[#C9A84C]" : "border-gray-200 hover:border-gray-300"
                     }`}
                   >
-                    <img src={img} alt={`Aperçu ${i + 1}`} className="w-full h-full object-cover" />
+                    <img
+                      src={img}
+                      alt={`Aperçu ${i + 1} – ${lot.name}`}
+                      className="w-full h-full object-cover"
+                      width={80}
+                      height={64}
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </button>
                 ))}
               </div>
@@ -419,8 +431,12 @@ export function LotDetail() {
                     >
                       <img
                         src={l.images[0]}
-                        alt={l.name}
+                        alt={`Aperçu – ${l.name}`}
                         className="w-14 h-12 object-cover rounded-md shrink-0"
+                        width={56}
+                        height={48}
+                        loading="lazy"
+                        decoding="async"
                       />
                       <div className="min-w-0">
                         <p className="text-sm font-semibold text-[#0F2D52] truncate group-hover:text-[#C9A84C] transition-colors">
