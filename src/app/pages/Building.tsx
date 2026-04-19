@@ -6,6 +6,13 @@ import {
   Zap,
   ArrowRight,
   Building2,
+  Wallet,
+  Users,
+  Sparkles,
+  Shield,
+  Maximize2,
+  Briefcase,
+  Coffee,
 } from "lucide-react";
 import { SEO } from "../components/SEO";
 import { Breadcrumb } from "../components/Breadcrumb";
@@ -114,6 +121,70 @@ export function Building() {
         </div>
       </section>
 
+      {/* ── Pourquoi choisir Galilée ── */}
+      <section className="py-16 bg-white" aria-labelledby="section-pourquoi">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <p className="text-[#C9A84C] text-sm font-semibold uppercase tracking-widest mb-2">
+              5 raisons
+            </p>
+            <h2
+              id="section-pourquoi"
+              className="text-2xl sm:text-3xl font-bold text-[#0F2D52]"
+            >
+              Pourquoi choisir le Bâtiment Galilée
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {[
+              {
+                icon: Wallet,
+                title: "Un seul loyer, tout est compris",
+                body:
+                  "Électricité, chauffage, climatisation neuve, eau, ménage des parties communes, entretien des espaces verts, taxe foncière, domiciliation : tout est inclus dans votre loyer mensuel. Budget prévisible, zéro surprise.",
+              },
+              {
+                icon: Users,
+                title: "Location directe propriétaire",
+                body:
+                  "Pas d'intermédiaire, pas de frais d'agence. Négociation directe, décisions rapides, interlocuteur unique pour la durée de votre bail.",
+              },
+              {
+                icon: Sparkles,
+                title: "Des espaces prêts à travailler",
+                body:
+                  "Bureaux climatisés, fibre optique raccordée, parking privatif de 26 places, cuisine équipée, terrasse. Aménagement adaptable selon la configuration de votre équipe.",
+              },
+              {
+                icon: Shield,
+                title: "Accessible et sécurisé",
+                body:
+                  "20 minutes du centre de Bordeaux (rocade sortie 2), bus Lianes 7 à 300 m, tram A à 800 m. Accès 24h/7j, contrôle d'accès, vidéosurveillance. Votre équipe travaille quand elle veut, en sécurité.",
+              },
+              {
+                icon: Maximize2,
+                title: "Du bureau individuel à l'open-space 145 m²",
+                body:
+                  "Freelance, PME en croissance, centre d'appels, back-office : des lots de 20 à 145 m², louables séparément ou combinables.",
+              },
+            ].map(({ icon: Icon, title, body }) => (
+              <div
+                key={title}
+                className="bg-gray-50 rounded-xl p-6 border border-gray-100"
+              >
+                <div className="w-10 h-10 bg-[#0F2D52] rounded-lg flex items-center justify-center mb-4">
+                  <Icon size={20} className="text-[#C9A84C]" />
+                </div>
+                <h3 className="font-bold text-[#0F2D52] text-base mb-2">
+                  {title}
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── Galerie photos ── */}
       <section className="py-16 bg-gray-50" aria-labelledby="section-galerie">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -193,25 +264,83 @@ export function Building() {
         </div>
       </section>
 
-      {/* ── Équipements & services ── */}
-      <section className="py-16 bg-white" aria-labelledby="section-equipements">
+      {/* ── Tout ce qui est compris dans votre loyer ── */}
+      <section className="py-16 bg-white" aria-labelledby="section-inclus">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
+          <div className="text-center max-w-3xl mx-auto mb-10">
             <p className="text-[#C9A84C] text-sm font-semibold uppercase tracking-widest mb-2">
-              Équipements & services
+              Budget prévisible
             </p>
-            <h2 id="section-equipements" className="text-2xl sm:text-3xl font-bold text-[#0F2D52]">
-              Tout ce qu'il faut pour travailler efficacement
+            <h2
+              id="section-inclus"
+              className="text-2xl sm:text-3xl font-bold text-[#0F2D52] mb-4"
+            >
+              Tout ce qui est compris dans votre loyer
             </h2>
+            <p className="text-gray-600 leading-relaxed">
+              L'ensemble des charges suivantes est inclus dans votre loyer
+              mensuel. Aucune charge supplémentaire ne viendra s'ajouter en
+              cours d'année.
+            </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {building.amenities.map((a) => (
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                icon: Zap,
+                title: "Énergie et confort",
+                items: [
+                  "Électricité du bureau et des parties communes",
+                  "Chauffage et climatisation (installation neuve)",
+                  "Eau (sanitaires et cuisine)",
+                ],
+              },
+              {
+                icon: Briefcase,
+                title: "Services professionnels",
+                items: [
+                  "Domiciliation d'entreprise",
+                  "Nettoyage des parties communes",
+                  "Entretien des espaces verts",
+                  "Taxe foncière",
+                ],
+              },
+              {
+                icon: Coffee,
+                title: "Équipements collectifs",
+                items: [
+                  "Cuisine équipée (réfrigérateur, micro-ondes, lave-vaisselle)",
+                  "Terrasse attenante",
+                  "Parking 26 places privatives",
+                  "Contrôle d'accès sécurisé et vidéosurveillance",
+                  "Accès 24h/7j",
+                  "Fibre optique raccordée (abonnement à la charge du locataire)",
+                ],
+              },
+            ].map(({ icon: Icon, title, items }) => (
               <div
-                key={a}
-                className="flex items-start gap-3 bg-gray-50 rounded-lg px-4 py-3.5 border border-gray-100"
+                key={title}
+                className="bg-gray-50 rounded-xl p-6 border border-gray-100"
               >
-                <CheckCircle2 size={17} className="text-[#C9A84C] shrink-0 mt-0.5" />
-                <span className="text-sm text-gray-700 font-medium">{a}</span>
+                <div className="w-10 h-10 bg-[#C9A84C] rounded-lg flex items-center justify-center mb-4">
+                  <Icon size={20} className="text-white" />
+                </div>
+                <h3 className="font-bold text-[#0F2D52] text-base mb-4">
+                  {title}
+                </h3>
+                <ul className="space-y-2">
+                  {items.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-2 text-sm text-gray-700 leading-relaxed"
+                    >
+                      <CheckCircle2
+                        size={14}
+                        className="text-[#C9A84C] shrink-0 mt-0.5"
+                      />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
