@@ -13,7 +13,6 @@ import {
   ChevronRight,
   Building2,
   CalendarCheck,
-  BadgeCheck,
   Gift,
   Train,
 } from "lucide-react";
@@ -272,31 +271,18 @@ export function LotDetail() {
               </div>
             )}
 
-            {/* ZFU + Sans engagement banners */}
-            {(lot.zfu || lot.noEngagement) && (
+            {/* Sans engagement banner */}
+            {lot.noEngagement && (
               <div className="grid sm:grid-cols-2 gap-4">
-                {lot.zfu && (
-                  <div className="bg-[#0F2D52] rounded-xl p-5 flex items-start gap-3">
-                    <BadgeCheck size={22} className="text-[#C9A84C] shrink-0 mt-0.5" />
-                    <div>
-                      <p className="font-bold text-white text-sm mb-1">Zone Franche Urbaine (ZFU)</p>
-                      <p className="text-white/70 text-xs leading-relaxed">
-                        Ce bien est situé en ZFU. Des exonérations fiscales significatives sont possibles pour les entreprises éligibles.
-                      </p>
-                    </div>
+                <div className="bg-emerald-600 rounded-xl p-5 flex items-start gap-3">
+                  <CheckCircle2 size={22} className="text-white shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-bold text-white text-sm mb-1">Sans engagement</p>
+                    <p className="text-white/80 text-xs leading-relaxed">
+                      Aucun frais d'entrée. Aucun engagement de durée minimale. Vous démarrez quand vous voulez.
+                    </p>
                   </div>
-                )}
-                {lot.noEngagement && (
-                  <div className="bg-emerald-600 rounded-xl p-5 flex items-start gap-3">
-                    <CheckCircle2 size={22} className="text-white shrink-0 mt-0.5" />
-                    <div>
-                      <p className="font-bold text-white text-sm mb-1">Sans engagement</p>
-                      <p className="text-white/80 text-xs leading-relaxed">
-                        Aucun frais d'entrée. Aucun engagement de durée minimale. Vous démarrez quand vous voulez.
-                      </p>
-                    </div>
-                  </div>
-                )}
+                </div>
               </div>
             )}
 
@@ -365,12 +351,6 @@ export function LotDetail() {
                       <div className="flex items-center gap-2 text-sm text-emerald-600 font-medium">
                         <CheckCircle2 size={15} className="shrink-0" />
                         Sans engagement
-                      </div>
-                    )}
-                    {lot.zfu && (
-                      <div className="flex items-center gap-2 text-sm text-[#C9A84C] font-medium">
-                        <BadgeCheck size={15} className="shrink-0" />
-                        Zone Franche Urbaine
                       </div>
                     )}
                   </div>
