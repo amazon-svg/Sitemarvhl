@@ -1,7 +1,8 @@
 export const building = {
   name: "Galilée",
   brand: "MARVHL",
-  tagline: "Des espaces de travail d'exception à Lormont",
+  tagline:
+    "Des espaces professionnels tout inclus, à 20 min de Bordeaux, en location directe propriétaire — sans frais d'agence.",
   address: {
     street: "12, rue Cantelaudette",
     city: "Lormont",
@@ -14,7 +15,7 @@ export const building = {
   description:
     "Le bâtiment Galilée est un immeuble de bureaux moderne situé à Lormont, dans la métropole bordelaise. Conçu pour répondre aux exigences des entreprises contemporaines, il propose des espaces de travail modulables, lumineux et entièrement équipés, accessibles depuis Bordeaux en moins de 15 minutes.",
   shortDescription:
-    "Immeuble de bureaux moderne à Lormont (33310), proche Bordeaux. Bureaux et open-spaces disponibles à la location.",
+    "Bureaux et open-spaces à louer à Lormont, 20 min de Bordeaux. Tout inclus, sans frais d'agence, parking privatif. Location directe propriétaire, accès 24h/7j.",
   totalSurface: 760,
   floors: 2,
   yearBuilt: 1998,
