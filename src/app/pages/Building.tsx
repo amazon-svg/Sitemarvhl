@@ -59,7 +59,7 @@ export function Building() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0F2D52]/80 via-[#0F2D52]/30 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
-          <Breadcrumb items={[{ label: "Le bâtiment" }]} />
+          <Breadcrumb items={[{ label: "Le bâtiment" }]} variant="dark" />
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mt-4">
             Bâtiment <span className="text-[#C9A84C]">{building.name}</span>
           </h1>

@@ -8,10 +8,25 @@ export interface BreadcrumbItem {
 
 interface BreadcrumbProps {
   items: BreadcrumbItem[];
+  variant?: "light" | "dark";
 }
 
-export function Breadcrumb({ items }: BreadcrumbProps) {
+export function Breadcrumb({ items, variant = "light" }: BreadcrumbProps) {
   const all = [{ label: "Accueil", href: "/" }, ...items];
+
+  const styles = variant === "dark"
+    ? {
+        nav: "text-white/80",
+        link: "hover:text-white transition-colors",
+        current: "text-white font-medium",
+        chevron: "text-white/50",
+      }
+    : {
+        nav: "text-gray-500",
+        link: "hover:text-[#0F2D52] transition-colors",
+        current: "text-[#0F2D52] font-medium",
+        chevron: "text-gray-400",
+      };
 
   // JSON-LD BreadcrumbList
   const jsonLd = {
@@ -31,26 +46,26 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <nav aria-label="Fil d'Ariane" className="flex items-center gap-1 text-sm text-gray-500">
+      <nav aria-label="Fil d'Ariane" className={`flex items-center gap-1 text-sm ${styles.nav}`}>
         {all.map((item, index) => (
           <span key={index} className="flex items-center gap-1">
             {index === 0 && <Home size={14} className="shrink-0" />}
             {item.href && index < all.length - 1 ? (
               <Link
                 to={item.href}
-                className="hover:text-[#0F2D52] transition-colors"
+                className={styles.link}
               >
                 {item.label}
               </Link>
             ) : (
               <span
-                className={index === all.length - 1 ? "text-[#0F2D52] font-medium" : ""}
+                className={index === all.length - 1 ? styles.current : ""}
                 aria-current={index === all.length - 1 ? "page" : undefined}
               >
                 {item.label}
               </span>
             )}
-            {index < all.length - 1 && <ChevronRight size={14} className="shrink-0 text-gray-400" />}
+            {index < all.length - 1 && <ChevronRight size={14} className={`shrink-0 ${styles.chevron}`} />}
           </span>
         ))}
       </nav>

@@ -58,7 +58,7 @@ export function Contact() {
       {/* ── Header ── */}
       <div className="bg-[#0F2D52] pt-8 pb-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Breadcrumb items={[{ label: "Contact" }]} />
+          <Breadcrumb items={[{ label: "Contact" }]} variant="dark" />
           <h1 className="text-3xl sm:text-4xl font-bold text-white mt-5">
             Contactez-nous
           </h1>
