@@ -32,11 +32,6 @@ export default defineConfig({
     // Ensure only one copy of React is used across all packages
     dedupe: ['react', 'react-dom', 'react-router'],
   },
-  optimizeDeps: {
-    // react-helmet-async is no longer used; exclude it to prevent duplicate React instances
-    exclude: ['react-helmet-async'],
-  },
-
   // File types to support raw imports. Never add .css, .tsx, or .ts files to this.
   assetsInclude: ['**/*.svg', '**/*.csv'],
 })
