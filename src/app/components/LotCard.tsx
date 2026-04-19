@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { ArrowRight, Users, Maximize2, MapPin, BadgeCheck } from "lucide-react";
+import { ArrowRight, Users, Maximize2, MapPin } from "lucide-react";
 import type { Lot } from "../data/lots";
 
 interface LotCardProps {
@@ -52,12 +52,6 @@ export function LotCard({ lot }: LotCardProps) {
           <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${status.className}`}>
             {status.label}
           </span>
-          {lot.zfu && (
-            <span className="inline-flex items-center gap-1 bg-[#0F2D52]/90 text-[#C9A84C] text-xs font-semibold px-2.5 py-1 rounded-full backdrop-blur-sm">
-              <BadgeCheck size={11} />
-              ZFU
-            </span>
-          )}
         </div>
         <div className="absolute top-3 right-3">
           <span className="bg-white/90 backdrop-blur-sm text-[#0F2D52] text-xs font-semibold px-2.5 py-1 rounded-full">
