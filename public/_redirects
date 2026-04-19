@@ -1,1 +1,7 @@
+# Canonicalisation : tous les domaines non-canoniques redirigent vers www.marvhl.fr
+# (Netlify ne redirige automatiquement que entre apex et www d'un même domaine.)
+https://location-bureaux-lormont.fr/*       https://www.marvhl.fr/:splat  301!
+https://www.location-bureaux-lormont.fr/*   https://www.marvhl.fr/:splat  301!
+
+# SPA fallback : toute route non matchée renvoie index.html (React Router prend le relais)
 /*  /index.html  200
