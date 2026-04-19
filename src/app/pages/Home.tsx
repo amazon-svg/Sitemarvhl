@@ -66,9 +66,15 @@ export function Home() {
           <div className="grid lg:grid-cols-[5fr_7fr] gap-0 items-stretch min-h-[360px]">
             {/* Texte */}
             <div className="flex flex-col justify-center py-10 lg:py-14 pr-0 lg:pr-8 z-10">
-              <div className="inline-flex items-center gap-2 bg-[#C9A84C]/20 text-[#C9A84C] text-xs font-semibold px-3 py-1.5 rounded-full mb-4 w-fit">
-                <MapPin size={12} />
-                {building.address.full}
+              <div className="flex flex-wrap gap-2 mb-4">
+                <div className="inline-flex items-center gap-2 bg-[#C9A84C]/20 text-[#C9A84C] text-xs font-semibold px-3 py-1.5 rounded-full w-fit">
+                  <MapPin size={12} />
+                  {building.address.full}
+                </div>
+                <div className="inline-flex items-center gap-2 bg-white/10 text-white text-xs font-semibold px-3 py-1.5 rounded-full w-fit border border-white/20">
+                  <CheckCircle2 size={12} className="text-[#C9A84C]" />
+                  TOUT INCLUS • SANS FRAIS D'AGENCE
+                </div>
               </div>
               <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight mb-3">
                 Bâtiment{" "}
@@ -79,7 +85,7 @@ export function Home() {
                 </span>
               </h1>
               <p className="text-white/75 text-sm mb-6 max-w-md leading-relaxed">
-                {building.tagline}. Espaces privatifs et modulables disponibles à la location.
+                {building.tagline}
               </p>
               <div className="flex flex-wrap gap-3">
                 <a
