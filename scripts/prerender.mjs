@@ -12,15 +12,27 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 
 // ── Construire la liste des routes à pré-rendre ──
+// Slugs des lots : extraits de data/lots.ts
 const lotsFile = fs.readFileSync(path.join(ROOT, 'src/app/data/lots.ts'), 'utf-8');
-const slugs = [...lotsFile.matchAll(/^\s{2,}slug:\s*["']([^"']+)["']/gm)].map((m) => m[1]);
+const lotSlugs = [...lotsFile.matchAll(/^\s{2,}slug:\s*["']([^"']+)["']/gm)].map((m) => m[1]);
+
+// Slugs blog : lecture dynamique du dossier content/blog/
+const BLOG_DIR = path.join(ROOT, 'src/content/blog');
+const blogSlugs = fs.existsSync(BLOG_DIR)
+  ? fs
+      .readdirSync(BLOG_DIR)
+      .filter((f) => f.endsWith('.md'))
+      .map((f) => f.replace(/\.md$/, ''))
+  : [];
 
 const routes = [
   '/',
   '/le-batiment',
   '/nos-lots',
+  '/blog',
   '/contact',
-  ...slugs.map((s) => `/lot/${s}`),
+  ...lotSlugs.map((s) => `/lot/${s}`),
+  ...blogSlugs.map((s) => `/blog/${s}`),
 ];
 
 // ── Charger le bundle SSR + le template HTML ──
