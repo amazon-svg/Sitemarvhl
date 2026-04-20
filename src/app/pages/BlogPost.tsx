@@ -1,0 +1,197 @@
+import { useParams, Navigate, Link } from "react-router";
+import { ArrowRight, Calendar, Clock, Tag, Building2 } from "lucide-react";
+import { SEO } from "../components/SEO";
+import { Breadcrumb } from "../components/Breadcrumb";
+import { getBlogPostBySlug, getRelatedPosts } from "../data/blogPosts";
+
+const SITE_URL = "https://www.marvhl.fr";
+
+function formatDate(iso: string): string {
+  const d = new Date(iso);
+  return d.toLocaleDateString("fr-FR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+}
+
+export function BlogPost() {
+  const { slug } = useParams<{ slug: string }>();
+  const post = getBlogPostBySlug(slug ?? "");
+
+  if (!post) return <Navigate to="/blog" replace />;
+
+  const related = getRelatedPosts(post.slug, 3);
+  const { frontmatter, html } = post;
+
+  const postJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: frontmatter.title,
+    description: frontmatter.description,
+    datePublished: frontmatter.date,
+    dateModified: frontmatter.date,
+    author: { "@type": "Organization", name: frontmatter.author },
+    publisher: {
+      "@type": "Organization",
+      name: "MARVHL",
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/favicon.png`,
+      },
+    },
+    image: frontmatter.og_image.startsWith("http")
+      ? frontmatter.og_image
+      : `${SITE_URL}${frontmatter.og_image}`,
+    mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
+    keywords: frontmatter.tags.join(", "),
+  };
+
+  return (
+    <>
+      <SEO
+        title={`${frontmatter.title} | MARVHL`}
+        description={frontmatter.description}
+        canonical={`/blog/${post.slug}`}
+        ogImage={frontmatter.og_image}
+        ogType="article"
+        jsonLd={postJsonLd}
+      />
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4">
+        <Breadcrumb
+          items={[
+            { label: "Blog", href: "/blog" },
+            { label: frontmatter.title },
+          ]}
+        />
+      </div>
+
+      <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        {/* ── Meta-infos + titre ── */}
+        <header className="mb-8 pt-4">
+          <div className="flex flex-wrap items-center gap-2 mb-4">
+            <span className="inline-flex items-center gap-1.5 bg-[#C9A84C]/15 text-[#0F2D52] text-xs font-semibold px-2.5 py-1 rounded-full">
+              <Tag size={11} />
+              {frontmatter.category}
+            </span>
+            <span className="flex items-center gap-1 text-xs text-gray-500">
+              <Calendar size={12} />
+              {formatDate(frontmatter.date)}
+            </span>
+            <span className="flex items-center gap-1 text-xs text-gray-500">
+              <Clock size={12} />
+              {frontmatter.reading_time} min de lecture
+            </span>
+          </div>
+          <p className="text-lg text-gray-600 leading-relaxed">
+            {frontmatter.description}
+          </p>
+        </header>
+
+        {/* ── Corps de l'article ── */}
+        <div
+          className="prose prose-lg max-w-none
+                     prose-headings:text-[#0F2D52] prose-headings:font-bold
+                     prose-h1:text-3xl prose-h1:sm:text-4xl prose-h1:mt-0 prose-h1:mb-6
+                     prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
+                     prose-h3:text-xl prose-h3:mt-6 prose-h3:mb-3
+                     prose-p:text-gray-700 prose-p:leading-relaxed
+                     prose-strong:text-[#0F2D52]
+                     prose-a:text-[#0F2D52] prose-a:font-semibold prose-a:no-underline hover:prose-a:text-[#C9A84C]
+                     prose-ul:text-gray-700 prose-li:my-1
+                     prose-table:text-sm prose-th:bg-gray-50 prose-th:text-[#0F2D52] prose-td:border-gray-200
+                     prose-hr:border-gray-200"
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
+
+        {/* ── Tags ── */}
+        {frontmatter.tags.length > 0 && (
+          <div className="mt-10 pt-6 border-t border-gray-200">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-xs text-gray-500 font-semibold uppercase tracking-wider mr-1">
+                Mots-clés :
+              </span>
+              {frontmatter.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="text-xs text-gray-600 bg-gray-100 px-2.5 py-1 rounded-full"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* ── CTA vers visite ── */}
+        <div className="mt-10 bg-[#0F2D52] rounded-2xl p-8 text-center">
+          <Building2 size={32} className="text-[#C9A84C] mx-auto mb-3" />
+          <h2 className="text-xl sm:text-2xl font-bold text-white mb-2">
+            Visiter le Bâtiment Galilée à Lormont
+          </h2>
+          <p className="text-white/75 text-sm mb-5 max-w-xl mx-auto">
+            Bureaux et open-spaces tout inclus, sans frais d'agence,
+            20 min de Bordeaux. Planifiez votre visite en 2 minutes.
+          </p>
+          <div className="flex flex-wrap gap-3 justify-center">
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 bg-[#C9A84C] hover:bg-[#b8963e] text-white font-semibold px-6 py-3 rounded-md text-sm transition-colors"
+            >
+              Demander une visite
+              <ArrowRight size={15} />
+            </Link>
+            <Link
+              to="/nos-lots"
+              className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/30 font-semibold px-6 py-3 rounded-md text-sm transition-colors"
+            >
+              Voir les lots disponibles
+            </Link>
+          </div>
+        </div>
+      </article>
+
+      {/* ── Articles liés ── */}
+      {related.length > 0 && (
+        <section
+          className="py-12 bg-gray-50 border-t border-gray-100"
+          aria-labelledby="section-related"
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2
+              id="section-related"
+              className="text-xl sm:text-2xl font-bold text-[#0F2D52] mb-6"
+            >
+              À lire aussi
+            </h2>
+            <div className="grid md:grid-cols-3 gap-5">
+              {related.map((r) => (
+                <article
+                  key={r.slug}
+                  className="bg-white rounded-xl p-5 border border-gray-100 hover:shadow-md transition-shadow"
+                >
+                  <div className="inline-flex items-center gap-1.5 bg-[#C9A84C]/15 text-[#0F2D52] text-xs font-semibold px-2.5 py-1 rounded-full mb-3">
+                    <Tag size={11} />
+                    {r.frontmatter.category}
+                  </div>
+                  <h3 className="text-base font-bold text-[#0F2D52] mb-2 leading-snug">
+                    <Link
+                      to={`/blog/${r.slug}`}
+                      className="hover:text-[#C9A84C] transition-colors"
+                    >
+                      {r.frontmatter.title}
+                    </Link>
+                  </h3>
+                  <p className="text-xs text-gray-600 leading-relaxed line-clamp-2">
+                    {r.frontmatter.description}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+    </>
+  );
+}
