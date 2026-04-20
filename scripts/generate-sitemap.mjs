@@ -16,11 +16,26 @@ const lotsFile = fs.readFileSync(path.join(ROOT, 'src/app/data/lots.ts'), 'utf-8
 const slugMatches = [...lotsFile.matchAll(/^\s{2,}slug:\s*["']([^"']+)["']/gm)];
 const slugs = slugMatches.map((m) => m[1]);
 
+// Extraire slug + date des articles blog depuis content/blog/*.md
+const BLOG_DIR = path.join(ROOT, 'src/content/blog');
+const blogPosts = fs.existsSync(BLOG_DIR)
+  ? fs
+      .readdirSync(BLOG_DIR)
+      .filter((f) => f.endsWith('.md'))
+      .map((file) => {
+        const raw = fs.readFileSync(path.join(BLOG_DIR, file), 'utf-8');
+        const slug = file.replace(/\.md$/, '');
+        const dateMatch = raw.match(/^date:\s*["']?([\d-]+)["']?/m);
+        return { slug, date: dateMatch ? dateMatch[1] : TODAY };
+      })
+  : [];
+
 // Pages statiques
 const staticPages = [
   { path: '/', priority: '1.0', changefreq: 'weekly' },
   { path: '/le-batiment', priority: '0.8', changefreq: 'monthly' },
   { path: '/nos-lots', priority: '0.9', changefreq: 'weekly' },
+  { path: '/blog', priority: '0.7', changefreq: 'weekly' },
   { path: '/contact', priority: '0.7', changefreq: 'monthly' },
 ];
 
@@ -30,7 +45,14 @@ const lotPages = slugs.map((slug) => ({
   changefreq: 'weekly',
 }));
 
-const allPages = [...staticPages, ...lotPages];
+const blogPages = blogPosts.map(({ slug, date }) => ({
+  path: `/blog/${slug}`,
+  priority: '0.6',
+  changefreq: 'monthly',
+  lastmod: date, // date de publication depuis le front-matter
+}));
+
+const allPages = [...staticPages, ...lotPages, ...blogPages];
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -38,7 +60,7 @@ ${allPages
   .map(
     (p) => `  <url>
     <loc>${SITE_URL}${p.path}</loc>
-    <lastmod>${TODAY}</lastmod>
+    <lastmod>${p.lastmod ?? TODAY}</lastmod>
     <changefreq>${p.changefreq}</changefreq>
     <priority>${p.priority}</priority>
   </url>`
