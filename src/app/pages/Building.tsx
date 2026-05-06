@@ -192,7 +192,7 @@ export function Building() {
             Découvrir le bâtiment
           </h2>
 
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-3 lg:grid-flow-row-dense gap-3 sm:gap-4">
             {/* Grande image en vedette */}
             <div className="col-span-2 lg:col-span-1 row-span-2 rounded-xl overflow-hidden" style={{minHeight: '300px'}}>
               <img
@@ -216,6 +216,18 @@ export function Building() {
                 decoding="async"
               />
             </div>
+            {/* Photo portrait : 3/4 et span 2 rangs sur desktop pour respecter l'orientation native (1920x2560) */}
+            <div className="rounded-xl overflow-hidden aspect-[3/4] lg:row-span-2">
+              <img
+                src={corridorColorImg}
+                alt="Couloir lumineux avec verrière zénithale et espaces de détente, bâtiment Galilée, Lormont"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                width={1920}
+                height={2560}
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
             <div className="rounded-xl overflow-hidden aspect-[4/3]">
               <img
                 src={buildingRedImg}
@@ -223,17 +235,6 @@ export function Building() {
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 width={1184}
                 height={864}
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <div className="rounded-xl overflow-hidden aspect-[4/3]">
-              <img
-                src={corridorColorImg}
-                alt="Couloir lumineux avec verrière zénithale et espaces de détente, bâtiment Galilée, Lormont"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                width={1920}
-                height={2560}
                 loading="lazy"
                 decoding="async"
               />
