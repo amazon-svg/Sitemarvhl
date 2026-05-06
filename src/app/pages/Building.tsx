@@ -22,6 +22,7 @@ import buildingTerraceImg from "figma:asset/f5d1a5760fa4243945e5fe33696439688970
 import buildingRedImg from "figma:asset/50327e10fa0874324564e7038562eb8b30b891cb.webp";
 import corridorColorImg from "figma:asset/341656b9c6aa184dbced406a1209b30a5e192864.webp";
 import exteriorPalmImg from "figma:asset/cb0719e0d5cac33f423d31a2d2f7468ce49e20c5.webp";
+import cuisineImg from "figma:asset/cuisine-commune-batiment-galilee.webp";
 
 const buildingJsonLd = {
   "@context": "https://schema.org",
@@ -245,6 +246,17 @@ export function Building() {
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 width={1600}
                 height={1200}
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div className="rounded-xl overflow-hidden aspect-[4/3]">
+              <img
+                src={cuisineImg}
+                alt="Cuisine commune équipée du bâtiment Galilée – réfrigérateur, plan de travail, vue terrasse"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                width={1448}
+                height={1086}
                 loading="lazy"
                 decoding="async"
               />
