@@ -7,13 +7,24 @@ import { LotCard } from "../components/LotCard";
 import { lots } from "../data/lots";
 import type { LotType, LotStatus } from "../data/lots";
 
+const SITE_URL = "https://www.marvhl.fr";
+
 const lotsJsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
   name: "Lots à louer – Bâtiment Galilée, Lormont",
   description: "Liste des bureaux et espaces disponibles à la location au 12 rue Cantelaudette, 33310 Lormont",
-  url: "https://www.marvhl.fr/nos-lots",
+  url: `${SITE_URL}/nos-lots`,
   numberOfItems: lots.length,
+};
+
+const lotsBreadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Accueil", item: `${SITE_URL}/` },
+    { "@type": "ListItem", position: 2, name: "Nos lots" },
+  ],
 };
 
 const TYPE_OPTIONS: { value: LotType | "all"; label: string }[] = [
@@ -47,7 +58,7 @@ export function Lots() {
         title="Nos lots à louer – Bureaux & Open Spaces à Lormont (33310) | MARVHL Galilée"
         description={`Découvrez nos ${lots.length} lots à la location dans le bâtiment Galilée à Lormont : bureaux privatifs et open spaces. ${disponibleCount} lots disponibles, loyer tout inclus, sans frais d'agence.`}
         canonical="/nos-lots"
-        jsonLd={lotsJsonLd}
+        jsonLd={[lotsJsonLd, lotsBreadcrumbJsonLd]}
       />
 
       {/* ── Header ── */}

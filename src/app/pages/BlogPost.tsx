@@ -2,7 +2,16 @@ import { useParams, Navigate, Link } from "react-router";
 import { ArrowRight, Calendar, Clock, Tag, Building2 } from "lucide-react";
 import { SEO } from "../components/SEO";
 import { Breadcrumb } from "../components/Breadcrumb";
+import { LotCard } from "../components/LotCard";
 import { getBlogPostBySlug, getRelatedPosts } from "../data/blogPosts";
+import { lots } from "../data/lots";
+
+const RECOMMENDED_LOTS: Record<string, string[]> = {
+  "centre-d-appels-a-bordeaux-implantation-2026": ["GAL-OS2", "GAL-OS1"],
+  "open-space-a-louer-bordeaux-criteres": ["GAL-OS3", "GAL-OS1", "GAL-OS2"],
+  "bureau-tout-inclus-vs-traditionnel-calcul-pme": ["GAL-101", "GAL-102", "GAL-103"],
+  "bureau-bordeaux-rive-droite-comparatif-2026": ["GAL-OS2"],
+};
 
 const SITE_URL = "https://www.marvhl.fr";
 
@@ -24,27 +33,35 @@ export function BlogPost() {
   const related = getRelatedPosts(post.slug, 3);
   const { frontmatter, html } = post;
 
+  const recommendedRefs = RECOMMENDED_LOTS[post.slug] ?? [];
+  const recommendedLots = recommendedRefs
+    .map((ref) => lots.find((l) => l.ref === ref))
+    .filter(Boolean) as (typeof lots)[number][];
+
   const postJsonLd = {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
+    "@type": "Article",
     headline: frontmatter.title,
     description: frontmatter.description,
     datePublished: frontmatter.date,
     dateModified: frontmatter.date,
-    author: { "@type": "Organization", name: frontmatter.author },
-    publisher: {
-      "@type": "Organization",
-      name: "MARVHL",
-      logo: {
-        "@type": "ImageObject",
-        url: `${SITE_URL}/favicon.png`,
-      },
-    },
+    author: { "@type": "Organization", name: frontmatter.author, url: SITE_URL },
+    publisher: { "@id": `${SITE_URL}/#organization` },
     image: frontmatter.og_image.startsWith("http")
       ? frontmatter.og_image
       : `${SITE_URL}${frontmatter.og_image}`,
     mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
     keywords: frontmatter.tags.join(", "),
+  };
+
+  const postBreadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Accueil", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
+      { "@type": "ListItem", position: 3, name: frontmatter.title },
+    ],
   };
 
   return (
@@ -55,7 +72,7 @@ export function BlogPost() {
         canonical={`/blog/${post.slug}`}
         ogImage={frontmatter.og_image}
         ogType="article"
-        jsonLd={postJsonLd}
+        jsonLd={[postJsonLd, postBreadcrumbJsonLd]}
       />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4">
@@ -151,6 +168,28 @@ export function BlogPost() {
           </div>
         </div>
       </article>
+
+      {/* ── Lot recommandé ── */}
+      {recommendedLots.length > 0 && (
+        <section
+          className="py-12 bg-white border-t border-gray-100"
+          aria-labelledby="section-lot-recommande"
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2
+              id="section-lot-recommande"
+              className="text-xl sm:text-2xl font-bold text-[#0F2D52] mb-6"
+            >
+              Le lot qui correspond à cet article
+            </h2>
+            <div className={`grid gap-6 ${recommendedLots.length === 1 ? "sm:grid-cols-1 max-w-sm" : recommendedLots.length === 2 ? "sm:grid-cols-2 max-w-2xl" : "sm:grid-cols-2 lg:grid-cols-3"}`}>
+              {recommendedLots.map((lot) => (
+                <LotCard key={lot.id} lot={lot} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── Articles liés ── */}
       {related.length > 0 && (

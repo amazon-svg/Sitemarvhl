@@ -23,6 +23,15 @@ const blogJsonLd = {
   })),
 };
 
+const blogBreadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Accueil", item: `${SITE_URL}/` },
+    { "@type": "ListItem", position: 2, name: "Blog" },
+  ],
+};
+
 function formatDate(iso: string): string {
   const d = new Date(iso);
   return d.toLocaleDateString("fr-FR", {
@@ -39,7 +48,7 @@ export function Blog() {
         title="Blog immobilier d'entreprise Bordeaux | MARVHL"
         description="Guides pratiques pour louer un bureau ou un open-space à Bordeaux : comparatifs, budgets, critères de choix."
         canonical="/blog"
-        jsonLd={blogJsonLd}
+        jsonLd={[blogJsonLd, blogBreadcrumbJsonLd]}
       />
 
       {/* ── Header ── */}
