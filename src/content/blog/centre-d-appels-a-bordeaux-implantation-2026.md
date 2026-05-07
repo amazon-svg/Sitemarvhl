@@ -200,7 +200,7 @@ Avant de signer un bail pour votre centre d'appels à Bordeaux, passez en revue 
 
 ## Ce que nous proposons au Bâtiment Galilée
 
-Notre **grand open-space de 143 m²** au rez-de-chaussée a été pensé pour ce type d'activité :
+Notre **grand open-space de 145 m²** au rez-de-chaussée a été pensé pour ce type d'activité :
 
 - **12 à 15 postes** en configuration standard, jusqu'à 18 en densifié
 - **2 entrées distinctes** (pratique pour séparer flux agents et flux visiteurs)

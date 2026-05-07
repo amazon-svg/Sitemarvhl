@@ -183,7 +183,7 @@ export const lots: Lot[] = [
     description:
       "Open space lumineux de 95 m² en rez-de-chaussée, modulable, climatisé. Idéal pour les startups en croissance et les équipes dynamiques. Disponible immédiatement.",
     longDescription:
-      "Open-space de 95 m² au rez-de-chaussée du bâtiment Galilée pour 10 à 15 postes. Accès PMR. Climatisé, lumineux, modulable selon l'organisation de votre équipe. Le bâtiment propose un parking privatif de 26 places, une cuisine équipée (réfrigérateur, micro-ondes, lave-vaisselle), une terrasse, la fibre optique, un contrôle d'accès et une vidéosurveillance 24h/7j. Loyer tout compris (électricité des communs, eau, ménage, taxe foncière, domiciliation, entretien des espaces verts). Location directe propriétaire — pas de frais d'agence.",
+      "Open-space de 95 m² au rez-de-chaussée du bâtiment Galilée pour 6 à 12 postes. Accès PMR. Climatisé, lumineux, modulable selon l'organisation de votre équipe. Le bâtiment propose un parking privatif de 26 places, une cuisine équipée (réfrigérateur, micro-ondes, lave-vaisselle), une terrasse, la fibre optique, un contrôle d'accès et une vidéosurveillance 24h/7j. Loyer tout compris (électricité des communs, eau, ménage, taxe foncière, domiciliation, entretien des espaces verts). Location directe propriétaire — pas de frais d'agence.",
     features: [
       "Climatisation neuve",
       "Lumineux – grands espaces ouverts",
@@ -214,7 +214,7 @@ export const lots: Lot[] = [
     images: [lotOS1Img1, lotOS1Img2, lotOS1Img3],
     metaTitle: "Open Space 95 m² à louer Lormont (33310) RDC – Bâtiment Galilée | MARVHL",
     metaDescription:
-      "Open-space 95 m² RDC, 10-15 postes, climatisé, modulable, accès PMR. Loyer tout inclus, sans frais d'agence. 1 150 € HT/mois. Lormont.",
+      "Open-space 95 m² RDC, 6–12 postes, climatisé, modulable, accès PMR. Loyer tout inclus, sans frais d'agence. 1 150 € HT/mois. Lormont.",
   },
   {
     id: 11,
@@ -232,7 +232,7 @@ export const lots: Lot[] = [
     description:
       "Open space lumineux de 145 m² en rez-de-chaussée, modulable, climatisé. Idéal pour les entreprises dynamiques, startups en croissance ou équipes qui s'étoffent. Disponible immédiatement.",
     longDescription:
-      "Grand plateau ouvert de 145 m² au rez-de-chaussée du bâtiment Galilée avec 2 entrées distinctes et accès direct à la terrasse. Capacité de 12 à 16 postes de travail, climatisé, lumineux. Idéal pour centres d'appels, back-offices, services client ou équipes commerciales. Parking 26 places privatives, cuisine équipée (frigo, micro-ondes, lave-vaisselle), fibre optique, contrôle d'accès et vidéosurveillance 24h/7j. Loyer tout compris (électricité des communs, eau, ménage, taxe foncière, domiciliation, entretien des espaces verts). Location directe propriétaire — pas de frais d'agence.",
+      "Grand plateau ouvert de 145 m² au rez-de-chaussée du bâtiment Galilée avec 2 entrées distinctes et accès direct à la terrasse. Capacité de 8 à 16 postes de travail, climatisé, lumineux. Idéal pour centres d'appels, back-offices, services client ou équipes commerciales. Parking 26 places privatives, cuisine équipée (frigo, micro-ondes, lave-vaisselle), fibre optique, contrôle d'accès et vidéosurveillance 24h/7j. Loyer tout compris (électricité des communs, eau, ménage, taxe foncière, domiciliation, entretien des espaces verts). Location directe propriétaire — pas de frais d'agence.",
     features: [
       "Climatisation neuve",
       "Lumineux – grands espaces ouverts",
@@ -265,7 +265,7 @@ export const lots: Lot[] = [
     images: [lotOS2Img1, lotOS2Img2],
     metaTitle: "Open Space 145 m² à louer Lormont (33310) RDC – Bâtiment Galilée | MARVHL",
     metaDescription:
-      "Open-space 145 m² RDC, 12-16 postes, 2 entrées, accès terrasse. Loyer tout inclus, location directe propriétaire. 1 800 € HT/mois. Lormont.",
+      "Open-space 145 m² RDC, 8–16 postes, 2 entrées, accès terrasse. Loyer tout inclus, location directe propriétaire. 1 800 € HT/mois. Lormont.",
   },
   {
     id: 12,
@@ -367,7 +367,7 @@ export const lots: Lot[] = [
     images: [lotOS3Img],
     metaTitle: "Open Space 94 m² à louer Lormont (33310) R+1 – Bâtiment Galilée | MARVHL",
     metaDescription:
-      "Open-space 94 m² au 1er étage, 20 postes, 2 bureaux privatifs intégrés. Loyer tout inclus, sans frais d'agence. À partir de 1 200 € HT/mois. Lormont.",
+      "Open-space 94 m² au 1er étage, 10–20 postes, 2 bureaux privatifs intégrés. Loyer tout inclus, sans frais d'agence. À partir de 1 200 € HT/mois. Lormont.",
   },
 ];
 
