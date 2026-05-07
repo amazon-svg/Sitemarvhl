@@ -202,7 +202,7 @@ Avant de signer un bail pour votre centre d'appels à Bordeaux, passez en revue 
 
 Notre **grand open-space de 145 m²** au rez-de-chaussée a été pensé pour ce type d'activité :
 
-- **12 à 15 postes** en configuration standard, jusqu'à 18 en densifié
+- **8 à 16 postes** selon la configuration retenue
 - **2 entrées distinctes** (pratique pour séparer flux agents et flux visiteurs)
 - **Accès direct à la terrasse** (vraie valeur ajoutée pour les pauses)
 - **Climatisation récente**, fibre optique raccordée, **parking 26 places privatives gratuites**
