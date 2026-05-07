@@ -355,7 +355,7 @@ export function Home() {
               Localisation
             </p>
             <h2 id="section-access" className="text-2xl sm:text-3xl font-bold text-[#0F2D52]">
-              Idéalement situé dans la métropole bordelaise
+              Idéalement situé sur la rive droite de la métropole bordelaise
             </h2>
             <p className="text-gray-500 mt-3 max-w-xl mx-auto">
               Bâtiment Galilée – {building.address.full}

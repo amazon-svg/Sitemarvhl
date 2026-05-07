@@ -9,9 +9,11 @@ import { lots } from "../data/lots";
 const RECOMMENDED_LOTS: Record<string, string[]> = {
   "centre-d-appels-a-bordeaux-implantation-2026": ["GAL-OS2", "GAL-OS1"],
   "open-space-a-louer-bordeaux-criteres": ["GAL-OS3", "GAL-OS1", "GAL-OS2"],
-  "bureau-tout-inclus-vs-traditionnel-calcul-pme": ["GAL-101", "GAL-102", "GAL-103"],
+  "bureau-tout-inclus-vs-traditionnel-calcul-pme": ["GAL-102", "GAL-101", "GAL-103"],
   "bureau-bordeaux-rive-droite-comparatif-2026": ["GAL-OS2"],
 };
+
+const SHOW_BUILDING_LINK = new Set(["bureau-bordeaux-rive-droite-comparatif-2026"]);
 
 const SITE_URL = "https://www.marvhl.fr";
 
@@ -37,6 +39,8 @@ export function BlogPost() {
   const recommendedLots = recommendedRefs
     .map((ref) => lots.find((l) => l.ref === ref))
     .filter(Boolean) as (typeof lots)[number][];
+
+  const showBuildingLink = SHOW_BUILDING_LINK.has(post.slug);
 
   const postJsonLd = {
     "@context": "https://schema.org",
@@ -170,7 +174,7 @@ export function BlogPost() {
       </article>
 
       {/* ── Lot recommandé ── */}
-      {recommendedLots.length > 0 && (
+      {(recommendedLots.length > 0 || showBuildingLink) && (
         <section
           className="py-12 bg-white border-t border-gray-100"
           aria-labelledby="section-lot-recommande"
@@ -182,10 +186,35 @@ export function BlogPost() {
             >
               Le lot qui correspond à cet article
             </h2>
-            <div className={`grid gap-6 ${recommendedLots.length === 1 ? "sm:grid-cols-1 max-w-sm" : recommendedLots.length === 2 ? "sm:grid-cols-2 max-w-2xl" : "sm:grid-cols-2 lg:grid-cols-3"}`}>
+            <div className={`grid gap-6 ${recommendedLots.length + (showBuildingLink ? 1 : 0) <= 1 ? "sm:grid-cols-1 max-w-sm" : recommendedLots.length + (showBuildingLink ? 1 : 0) === 2 ? "sm:grid-cols-2 max-w-2xl" : "sm:grid-cols-2 lg:grid-cols-3"}`}>
               {recommendedLots.map((lot) => (
                 <LotCard key={lot.id} lot={lot} />
               ))}
+              {showBuildingLink && (
+                <Link
+                  to="/le-batiment"
+                  className="bg-[#0F2D52] rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-0.5 transition-all group flex flex-col"
+                  aria-label="Découvrir le bâtiment Galilée"
+                >
+                  <div className="bg-[#0a1f3a] p-6 flex-1 flex flex-col justify-between gap-4">
+                    <div>
+                      <p className="text-xs text-[#C9A84C] font-semibold uppercase tracking-widest mb-2">
+                        Bâtiment Galilée · Lormont
+                      </p>
+                      <h3 className="text-lg font-bold text-white group-hover:text-[#C9A84C] transition-colors">
+                        Découvrir l'immeuble
+                      </h3>
+                      <p className="text-white/70 text-sm mt-2 leading-relaxed">
+                        760 m² de bureaux, 2 niveaux, certification BBC, 26 places de parking. Tout inclus, sans frais d'agence.
+                      </p>
+                    </div>
+                    <span className="inline-flex items-center gap-2 text-[#C9A84C] font-semibold text-sm">
+                      Voir le bâtiment
+                      <ArrowRight size={14} />
+                    </span>
+                  </div>
+                </Link>
+              )}
             </div>
           </div>
         </section>
