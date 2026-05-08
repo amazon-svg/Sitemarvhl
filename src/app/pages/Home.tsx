@@ -18,22 +18,137 @@ import { lots } from "../data/lots";
 import buildingFrontImg from "figma:asset/6a3f5bf8b62646fdb9bd10021224db52cec44dd1.webp";
 import buildingTerraceImg from "figma:asset/f5d1a5760fa4243945e5fe33696439688970d9fa.webp";
 import buildingRedImg from "figma:asset/50327e10fa0874324564e7038562eb8b30b891cb.webp";
+import logoImg from "figma:asset/020393562d2638c44029c529b172f40a7804d8c0.webp";
+import { FAQ } from "../components/FAQ";
 
-const homeJsonLd = {
+const SITE_URL = "https://www.marvhl.fr";
+
+const homeOrganizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "RealEstateAgent",
+  "@id": `${SITE_URL}/#organization`,
   name: "MARVHL",
-  description: building.description,
-  url: "https://www.marvhl.fr",
+  alternateName: "SCSi MARVHL",
+  description: "Commercialisation directe de bureaux et open-spaces au bâtiment Galilée à Lormont (Bordeaux rive droite). Location directe propriétaire, sans frais d'agence, loyer tout inclus.",
+  url: SITE_URL,
+  get logo() { return `${SITE_URL}${logoImg}`; },
+  get image() { return `${SITE_URL}${buildingFrontImg}`; },
+  telephone: "+33756806404",
+  email: building.email,
   address: {
     "@type": "PostalAddress",
     streetAddress: building.address.street,
-    addressLocality: building.address.city,
     postalCode: building.address.postalCode,
+    addressLocality: building.address.city,
+    addressRegion: "Nouvelle-Aquitaine",
     addressCountry: "FR",
   },
-  telephone: building.phone,
-  email: building.email,
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 44.87,
+    longitude: -0.52,
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "18:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Saturday",
+      opens: "00:00",
+      closes: "00:00",
+      description: "Sur rendez-vous",
+    },
+  ],
+  areaServed: [
+    { "@type": "City", name: "Bordeaux" },
+    { "@type": "City", name: "Lormont" },
+    { "@type": "AdministrativeArea", name: "Bordeaux Métropole" },
+  ],
+  priceRange: "245€-1800€",
+  sameAs: ["https://www.linkedin.com/company/marvhl"],
+};
+
+const homeFaqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Quel est le prix d'un bureau au bâtiment Galilée ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Les loyers démarrent à 245 € HT/mois pour un bureau individuel de 20 m² et vont jusqu'à 1 800 € HT/mois pour un open-space de 145 m². Tous les loyers sont tout inclus : électricité, chauffage, climatisation, eau, ménage des parties communes, taxe foncière et domiciliation.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Y a-t-il des frais d'agence pour louer un bureau au bâtiment Galilée ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Non. La location se fait en direct avec le propriétaire, sans aucun frais d'agence ni honoraires de commercialisation.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Quels services sont inclus dans le loyer ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Le loyer comprend l'électricité, le chauffage et la climatisation, l'eau, le ménage des parties communes, l'entretien des espaces verts, la domiciliation d'entreprise et la taxe foncière. La fibre optique est raccordée (abonnement à la charge du locataire).",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Comment visiter le bâtiment Galilée ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Les visites se font sur rendez-vous, du lundi au vendredi de 9h à 18h, et le samedi sur rendez-vous. Vous pouvez prendre contact au 07 56 80 64 04 ou par email à contact.marvhl@gmail.com.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Le bâtiment Galilée est-il accessible PMR ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Oui. Le rez-de-chaussée est accessible aux personnes à mobilité réduite, y compris l'open-space 95 m² avec son bureau attenant.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Y a-t-il un parking ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Oui, 26 places de parking privatives sont disponibles sur site, incluses dans le loyer.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Peut-on domicilier son entreprise au bâtiment Galilée ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Oui, la domiciliation d'entreprise est incluse dans le loyer pour tous les locataires du bâtiment Galilée.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Quelle est la durée d'engagement minimum ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Le bail proposé est un bail professionnel 3-6-9 selon accord. Le dépôt de garantie est de 3 mois de loyer. La disponibilité est immédiate.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Comment se rendre au bâtiment Galilée depuis Bordeaux ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Le bâtiment se trouve à 12 rue Cantelaudette, 33310 Lormont, à 15-20 minutes du centre de Bordeaux par la rocade A630 (sortie 23 Lormont). Le tram ligne A (arrêt Les Lauriers) est à 8 minutes à pied.",
+      },
+    },
+  ],
 };
 
 const stats = [
@@ -50,11 +165,11 @@ export function Home() {
   return (
     <>
       <SEO
-        title="MARVHL – Bureaux & Espaces à louer à Lormont (33310) | Bâtiment Galilée"
+        title="Bureaux à louer Lormont (33310) — Bâtiment Galilée, Bordeaux rive droite | MARVHL"
         description={building.shortDescription}
         canonical="/"
         ogImage={buildingFrontImg}
-        jsonLd={homeJsonLd}
+        jsonLd={[homeOrganizationJsonLd, homeFaqJsonLd]}
       />
 
       {/* ── Bandeau introductif compact ── */}
@@ -77,11 +192,10 @@ export function Home() {
                 </div>
               </div>
               <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight mb-3">
-                Bâtiment{" "}
-                <span className="text-[#C9A84C]">{building.name}</span>
+                Bureaux et open-spaces à louer à Lormont
                 <br />
                 <span className="text-xl sm:text-2xl font-normal text-white/80">
-                  Bureaux & open-spaces à Lormont
+                  Bâtiment <span className="text-[#C9A84C]">{building.name}</span>, Bordeaux rive droite
                 </span>
               </h1>
               <p className="text-white/75 text-sm mb-6 max-w-md leading-relaxed">
@@ -242,7 +356,7 @@ export function Home() {
               Localisation
             </p>
             <h2 id="section-access" className="text-2xl sm:text-3xl font-bold text-[#0F2D52]">
-              Idéalement situé dans la métropole bordelaise
+              Idéalement situé sur la rive droite de la métropole bordelaise
             </h2>
             <p className="text-gray-500 mt-3 max-w-xl mx-auto">
               Bâtiment Galilée – {building.address.full}
@@ -325,6 +439,9 @@ export function Home() {
           </div>
         </div>
       </section>
+
+      {/* ── FAQ ── */}
+      <FAQ />
     </>
   );
 }

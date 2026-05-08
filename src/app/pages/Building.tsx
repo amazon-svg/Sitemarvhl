@@ -24,6 +24,8 @@ import corridorColorImg from "figma:asset/341656b9c6aa184dbced406a1209b30a5e1928
 import exteriorPalmImg from "figma:asset/cb0719e0d5cac33f423d31a2d2f7468ce49e20c5.webp";
 import cuisineImg from "figma:asset/cuisine-commune-batiment-galilee.webp";
 
+const SITE_URL = "https://www.marvhl.fr";
+
 const buildingJsonLd = {
   "@context": "https://schema.org",
   "@type": "OfficeBuilding",
@@ -36,13 +38,28 @@ const buildingJsonLd = {
     postalCode: building.address.postalCode,
     addressCountry: "FR",
   },
-  url: "https://www.marvhl.fr/le-batiment",
+  url: `${SITE_URL}/le-batiment`,
   floorSize: {
     "@type": "QuantitativeValue",
     value: building.totalSurface,
     unitCode: "MTK",
   },
   numberOfFloors: building.floors,
+};
+
+const buildingBreadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Accueil", item: `${SITE_URL}/` },
+    { "@type": "ListItem", position: 2, name: "Le bâtiment" },
+  ],
+};
+
+const orgRefJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  "@id": `${SITE_URL}/#organization`,
 };
 
 export function Building() {
@@ -53,7 +70,7 @@ export function Building() {
         description={`Découvrez le bâtiment Galilée, ${building.totalSurface.toLocaleString("fr-FR")} m² de bureaux certifiés BBC au cœur de la métropole bordelaise, 12 rue Cantelaudette, Lormont (33310).`}
         canonical="/le-batiment"
         ogImage={buildingFrontImg}
-        jsonLd={buildingJsonLd}
+        jsonLd={[buildingJsonLd, buildingBreadcrumbJsonLd, orgRefJsonLd]}
       />
 
       {/* ── Hero ── */}
@@ -73,6 +90,9 @@ export function Building() {
           <Breadcrumb items={[{ label: "Le bâtiment" }]} variant="dark" />
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mt-4">
             Bâtiment <span className="text-[#C9A84C]">{building.name}</span>
+            <span className="block text-2xl sm:text-3xl font-normal text-white/80 mt-1">
+              Immeuble de bureaux à louer à Lormont, Bordeaux rive droite
+            </span>
           </h1>
           <p className="text-white/80 mt-2 text-lg">{building.address.full}</p>
         </div>

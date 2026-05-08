@@ -21,6 +21,17 @@ import { Breadcrumb } from "../components/Breadcrumb";
 import { ContactForm } from "../components/ContactForm";
 import { getLotBySlug, lots } from "../data/lots";
 import { building } from "../data/building";
+import { blogPosts } from "../data/blogPosts";
+
+const RELATED_BLOG: Record<string, string[]> = {
+  "GAL-102": ["bureau-tout-inclus-vs-traditionnel-calcul-pme"],
+  "GAL-101": ["bureau-tout-inclus-vs-traditionnel-calcul-pme"],
+  "GAL-103": ["bureau-tout-inclus-vs-traditionnel-calcul-pme"],
+  "GAL-104": ["bureau-tout-inclus-vs-traditionnel-calcul-pme", "bureau-bordeaux-rive-droite-comparatif-2026"],
+  "GAL-OS3": ["open-space-a-louer-bordeaux-criteres"],
+  "GAL-OS1": ["open-space-a-louer-bordeaux-criteres", "centre-d-appels-a-bordeaux-implantation-2026"],
+  "GAL-OS2": ["centre-d-appels-a-bordeaux-implantation-2026", "bureau-bordeaux-rive-droite-comparatif-2026"],
+};
 
 const statusConfig = {
   disponible: {
@@ -54,39 +65,54 @@ export function LotDetail() {
   const isAvailable = lot.status === "disponible";
   const otherLots = lots.filter((l) => l.id !== lot.id && l.status === "disponible").slice(0, 3);
 
-  const lotJsonLd = {
+  const relatedBlogSlugs = RELATED_BLOG[lot.ref] ?? [];
+  const relatedBlogPosts = relatedBlogSlugs
+    .map((s) => blogPosts.find((p) => p.slug === s))
+    .filter(Boolean) as (typeof blogPosts)[number][];
+
+  const SITE_URL = "https://www.marvhl.fr";
+  const lotImageUrl = lot.images[0].startsWith("http") ? lot.images[0] : `${SITE_URL}${lot.images[0]}`;
+
+  const orgRefJsonLd = {
     "@context": "https://schema.org",
-    "@type": "Accommodation",
+    "@type": "RealEstateAgent",
+    "@id": `${SITE_URL}/#organization`,
+  };
+
+  const lotProductJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
     name: lot.name,
     description: lot.longDescription,
-    url: `https://www.marvhl.fr/lot/${lot.slug}`,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: building.address.street,
-      addressLocality: building.address.city,
-      postalCode: building.address.postalCode,
-      addressCountry: "FR",
+    image: lotImageUrl,
+    sku: lot.ref,
+    brand: { "@type": "Brand", "name": "MARVHL — Bâtiment Galilée" },
+    offers: {
+      "@type": "Offer",
+      price: lot.price.toString(),
+      priceCurrency: "EUR",
+      availability: isAvailable ? "https://schema.org/InStock" : "https://schema.org/SoldOut",
+      url: `${SITE_URL}/lot/${lot.slug}`,
+      priceValidUntil: "2026-12-31",
+      seller: { "@id": `${SITE_URL}/#organization` },
     },
-    floorSize: {
-      "@type": "QuantitativeValue",
-      value: lot.surface,
-      unitCode: "MTK",
-    },
-    image: lot.images[0],
-    ...(isAvailable && {
-      offers: {
-        "@type": "Offer",
-        price: lot.price,
-        priceCurrency: "EUR",
-        availability: "https://schema.org/InStock",
-        priceSpecification: {
-          "@type": "UnitPriceSpecification",
-          price: lot.price,
-          priceCurrency: "EUR",
-          referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "MON" },
-        },
-      },
-    }),
+    additionalProperty: [
+      { "@type": "PropertyValue", name: "Surface", value: `${lot.surface} m²` },
+      { "@type": "PropertyValue", name: "Étage", value: lot.floorLabel },
+      { "@type": "PropertyValue", name: "Capacité", value: `${lot.capacity.min} à ${lot.capacity.max} postes` },
+      { "@type": "PropertyValue", name: "Type", value: typeLabel[lot.type] },
+      { "@type": "PropertyValue", name: "Parking", value: "26 places privatives" },
+    ],
+  };
+
+  const lotBreadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Accueil", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: "Nos lots", item: `${SITE_URL}/nos-lots` },
+      { "@type": "ListItem", position: 3, name: lot.name },
+    ],
   };
 
   return (
@@ -96,7 +122,7 @@ export function LotDetail() {
         description={lot.metaDescription}
         canonical={`/lot/${lot.slug}`}
         ogImage={lot.images[0]}
-        jsonLd={lotJsonLd}
+        jsonLd={[lotProductJsonLd, lotBreadcrumbJsonLd, orgRefJsonLd]}
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4">
@@ -222,7 +248,7 @@ export function LotDetail() {
                 </div>
                 <div className="flex items-center gap-2 text-gray-600 text-sm">
                   <Users size={16} className="text-[#C9A84C]" />
-                  <span>{lot.capacity.min}{lot.capacity.max} postes de travail</span>
+                  <span>{lot.capacity.min}–{lot.capacity.max} postes de travail</span>
                 </div>
                 <div className="flex items-center gap-2 text-gray-600 text-sm">
                   <MapPin size={16} className="text-[#C9A84C]" />
@@ -453,6 +479,35 @@ export function LotDetail() {
             <ContactForm defaultLot={lot.name} defaultRef={lot.ref} />
           </div>
         </div>
+
+        {/* ── Pour aller plus loin ── */}
+        {relatedBlogPosts.length > 0 && (
+          <div className="mt-12 pt-8 border-t border-gray-100">
+            <h2 className="text-lg font-bold text-[#0F2D52] mb-5">Pour aller plus loin</h2>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {relatedBlogPosts.map((p) => (
+                <Link
+                  key={p.slug}
+                  to={`/blog/${p.slug}`}
+                  className="flex items-start gap-4 bg-gray-50 rounded-xl p-4 border border-gray-100 hover:shadow-md hover:-translate-y-0.5 transition-all group"
+                >
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs text-[#C9A84C] font-semibold uppercase tracking-wide mb-1">
+                      {p.frontmatter.category}
+                    </p>
+                    <h3 className="text-sm font-bold text-[#0F2D52] leading-snug group-hover:text-[#C9A84C] transition-colors line-clamp-2">
+                      {p.frontmatter.title}
+                    </h3>
+                    <p className="text-xs text-gray-500 mt-1 line-clamp-2 leading-relaxed">
+                      {p.frontmatter.description}
+                    </p>
+                  </div>
+                  <ArrowRight size={16} className="text-[#C9A84C] shrink-0 mt-1" />
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* ── Navigation ── */}
         <div className="mt-12 pt-8 border-t border-gray-100">

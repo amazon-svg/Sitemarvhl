@@ -2,9 +2,26 @@ import { useParams, Navigate, Link } from "react-router";
 import { ArrowRight, Calendar, Clock, Tag, Building2 } from "lucide-react";
 import { SEO } from "../components/SEO";
 import { Breadcrumb } from "../components/Breadcrumb";
+import { LotCard } from "../components/LotCard";
 import { getBlogPostBySlug, getRelatedPosts } from "../data/blogPosts";
+import { lots } from "../data/lots";
+
+const RECOMMENDED_LOTS: Record<string, string[]> = {
+  "centre-d-appels-a-bordeaux-implantation-2026": ["GAL-OS2", "GAL-OS1"],
+  "open-space-a-louer-bordeaux-criteres": ["GAL-OS3", "GAL-OS1", "GAL-OS2"],
+  "bureau-tout-inclus-vs-traditionnel-calcul-pme": ["GAL-102", "GAL-101", "GAL-103"],
+  "bureau-bordeaux-rive-droite-comparatif-2026": ["GAL-OS2"],
+};
+
+const SHOW_BUILDING_LINK = new Set(["bureau-bordeaux-rive-droite-comparatif-2026"]);
 
 const SITE_URL = "https://www.marvhl.fr";
+
+const orgRefJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  "@id": `${SITE_URL}/#organization`,
+};
 
 function formatDate(iso: string): string {
   const d = new Date(iso);
@@ -13,6 +30,10 @@ function formatDate(iso: string): string {
     month: "long",
     year: "numeric",
   });
+}
+
+function toIsoDateTime(dateStr: string): string {
+  return dateStr.includes("T") ? dateStr : `${dateStr}T09:00:00+02:00`;
 }
 
 export function BlogPost() {
@@ -24,27 +45,41 @@ export function BlogPost() {
   const related = getRelatedPosts(post.slug, 3);
   const { frontmatter, html } = post;
 
+  const recommendedRefs = RECOMMENDED_LOTS[post.slug] ?? [];
+  const recommendedLots = recommendedRefs
+    .map((ref) => lots.find((l) => l.ref === ref))
+    .filter(Boolean) as (typeof lots)[number][];
+
+  const showBuildingLink = SHOW_BUILDING_LINK.has(post.slug);
+
+  const articleImage = (() => {
+    const img = recommendedLots[0]?.images[0];
+    if (!img) return `${SITE_URL}/og-image.jpg`;
+    return img.startsWith("http") ? img : `${SITE_URL}${img}`;
+  })();
+
   const postJsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: frontmatter.title,
     description: frontmatter.description,
-    datePublished: frontmatter.date,
-    dateModified: frontmatter.date,
-    author: { "@type": "Organization", name: frontmatter.author },
-    publisher: {
-      "@type": "Organization",
-      name: "MARVHL",
-      logo: {
-        "@type": "ImageObject",
-        url: `${SITE_URL}/favicon.png`,
-      },
-    },
-    image: frontmatter.og_image.startsWith("http")
-      ? frontmatter.og_image
-      : `${SITE_URL}${frontmatter.og_image}`,
+    datePublished: toIsoDateTime(frontmatter.date),
+    dateModified: toIsoDateTime(frontmatter.date),
+    author: { "@type": "Organization", name: frontmatter.author, url: SITE_URL },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    image: articleImage,
     mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
     keywords: frontmatter.tags.join(", "),
+  };
+
+  const postBreadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Accueil", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
+      { "@type": "ListItem", position: 3, name: frontmatter.title },
+    ],
   };
 
   return (
@@ -53,9 +88,9 @@ export function BlogPost() {
         title={`${frontmatter.title} | MARVHL`}
         description={frontmatter.description}
         canonical={`/blog/${post.slug}`}
-        ogImage={frontmatter.og_image}
+        ogImage={articleImage}
         ogType="article"
-        jsonLd={postJsonLd}
+        jsonLd={[postJsonLd, postBreadcrumbJsonLd, orgRefJsonLd]}
       />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4">
@@ -151,6 +186,53 @@ export function BlogPost() {
           </div>
         </div>
       </article>
+
+      {/* ── Lot recommandé ── */}
+      {(recommendedLots.length > 0 || showBuildingLink) && (
+        <section
+          className="py-12 bg-white border-t border-gray-100"
+          aria-labelledby="section-lot-recommande"
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2
+              id="section-lot-recommande"
+              className="text-xl sm:text-2xl font-bold text-[#0F2D52] mb-6"
+            >
+              Le lot qui correspond à cet article
+            </h2>
+            <div className={`grid gap-6 ${recommendedLots.length + (showBuildingLink ? 1 : 0) <= 1 ? "sm:grid-cols-1 max-w-sm" : recommendedLots.length + (showBuildingLink ? 1 : 0) === 2 ? "sm:grid-cols-2 max-w-2xl" : "sm:grid-cols-2 lg:grid-cols-3"}`}>
+              {recommendedLots.map((lot) => (
+                <LotCard key={lot.id} lot={lot} />
+              ))}
+              {showBuildingLink && (
+                <Link
+                  to="/le-batiment"
+                  className="bg-[#0F2D52] rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-0.5 transition-all group flex flex-col"
+                  aria-label="Découvrir le bâtiment Galilée"
+                >
+                  <div className="bg-[#0a1f3a] p-6 flex-1 flex flex-col justify-between gap-4">
+                    <div>
+                      <p className="text-xs text-[#C9A84C] font-semibold uppercase tracking-widest mb-2">
+                        Bâtiment Galilée · Lormont
+                      </p>
+                      <h3 className="text-lg font-bold text-white group-hover:text-[#C9A84C] transition-colors">
+                        Découvrir l'immeuble
+                      </h3>
+                      <p className="text-white/70 text-sm mt-2 leading-relaxed">
+                        760 m² de bureaux, 2 niveaux, certification BBC, 26 places de parking. Tout inclus, sans frais d'agence.
+                      </p>
+                    </div>
+                    <span className="inline-flex items-center gap-2 text-[#C9A84C] font-semibold text-sm">
+                      Voir le bâtiment
+                      <ArrowRight size={14} />
+                    </span>
+                  </div>
+                </Link>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── Articles liés ── */}
       {related.length > 0 && (

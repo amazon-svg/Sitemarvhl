@@ -36,20 +36,20 @@ const staticPages = [
   { path: '/le-batiment', priority: '0.8', changefreq: 'monthly' },
   { path: '/nos-lots', priority: '0.9', changefreq: 'weekly' },
   { path: '/blog', priority: '0.7', changefreq: 'weekly' },
-  { path: '/contact', priority: '0.7', changefreq: 'monthly' },
+  { path: '/contact', priority: '0.5', changefreq: 'monthly' },
 ];
 
 const lotPages = slugs.map((slug) => ({
   path: `/lot/${slug}`,
-  priority: '0.8',
+  priority: '0.9',
   changefreq: 'weekly',
 }));
 
 const blogPages = blogPosts.map(({ slug, date }) => ({
   path: `/blog/${slug}`,
-  priority: '0.6',
+  priority: '0.7',
   changefreq: 'monthly',
-  lastmod: date, // date de publication depuis le front-matter
+  lastmod: date,
 }));
 
 const allPages = [...staticPages, ...lotPages, ...blogPages];
