@@ -17,6 +17,12 @@ const SHOW_BUILDING_LINK = new Set(["bureau-bordeaux-rive-droite-comparatif-2026
 
 const SITE_URL = "https://www.marvhl.fr";
 
+const orgRefJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  "@id": `${SITE_URL}/#organization`,
+};
+
 function formatDate(iso: string): string {
   const d = new Date(iso);
   return d.toLocaleDateString("fr-FR", {
@@ -24,6 +30,10 @@ function formatDate(iso: string): string {
     month: "long",
     year: "numeric",
   });
+}
+
+function toIsoDateTime(dateStr: string): string {
+  return dateStr.includes("T") ? dateStr : `${dateStr}T09:00:00+02:00`;
 }
 
 export function BlogPost() {
@@ -42,18 +52,22 @@ export function BlogPost() {
 
   const showBuildingLink = SHOW_BUILDING_LINK.has(post.slug);
 
+  const articleImage = (() => {
+    const img = recommendedLots[0]?.images[0];
+    if (!img) return `${SITE_URL}/og-image.jpg`;
+    return img.startsWith("http") ? img : `${SITE_URL}${img}`;
+  })();
+
   const postJsonLd = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline: frontmatter.title,
     description: frontmatter.description,
-    datePublished: frontmatter.date,
-    dateModified: frontmatter.date,
+    datePublished: toIsoDateTime(frontmatter.date),
+    dateModified: toIsoDateTime(frontmatter.date),
     author: { "@type": "Organization", name: frontmatter.author, url: SITE_URL },
     publisher: { "@id": `${SITE_URL}/#organization` },
-    image: frontmatter.og_image.startsWith("http")
-      ? frontmatter.og_image
-      : `${SITE_URL}${frontmatter.og_image}`,
+    image: articleImage,
     mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
     keywords: frontmatter.tags.join(", "),
   };
@@ -74,9 +88,9 @@ export function BlogPost() {
         title={`${frontmatter.title} | MARVHL`}
         description={frontmatter.description}
         canonical={`/blog/${post.slug}`}
-        ogImage={frontmatter.og_image}
+        ogImage={articleImage}
         ogType="article"
-        jsonLd={[postJsonLd, postBreadcrumbJsonLd]}
+        jsonLd={[postJsonLd, postBreadcrumbJsonLd, orgRefJsonLd]}
       />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4">

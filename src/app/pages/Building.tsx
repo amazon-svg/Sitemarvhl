@@ -56,6 +56,12 @@ const buildingBreadcrumbJsonLd = {
   ],
 };
 
+const orgRefJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  "@id": `${SITE_URL}/#organization`,
+};
+
 export function Building() {
   return (
     <>
@@ -64,7 +70,7 @@ export function Building() {
         description={`Découvrez le bâtiment Galilée, ${building.totalSurface.toLocaleString("fr-FR")} m² de bureaux certifiés BBC au cœur de la métropole bordelaise, 12 rue Cantelaudette, Lormont (33310).`}
         canonical="/le-batiment"
         ogImage={buildingFrontImg}
-        jsonLd={[buildingJsonLd, buildingBreadcrumbJsonLd]}
+        jsonLd={[buildingJsonLd, buildingBreadcrumbJsonLd, orgRefJsonLd]}
       />
 
       {/* ── Hero ── */}

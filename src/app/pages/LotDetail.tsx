@@ -73,6 +73,12 @@ export function LotDetail() {
   const SITE_URL = "https://www.marvhl.fr";
   const lotImageUrl = lot.images[0].startsWith("http") ? lot.images[0] : `${SITE_URL}${lot.images[0]}`;
 
+  const orgRefJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "@id": `${SITE_URL}/#organization`,
+  };
+
   const lotProductJsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -116,7 +122,7 @@ export function LotDetail() {
         description={lot.metaDescription}
         canonical={`/lot/${lot.slug}`}
         ogImage={lot.images[0]}
-        jsonLd={[lotProductJsonLd, lotBreadcrumbJsonLd]}
+        jsonLd={[lotProductJsonLd, lotBreadcrumbJsonLd, orgRefJsonLd]}
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4">

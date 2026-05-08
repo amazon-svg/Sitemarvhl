@@ -68,6 +68,7 @@ const homeOrganizationJsonLd = {
     { "@type": "City", name: "Lormont" },
     { "@type": "AdministrativeArea", name: "Bordeaux Métropole" },
   ],
+  priceRange: "245€-1800€",
   sameAs: ["https://www.linkedin.com/company/marvhl"],
 };
 
