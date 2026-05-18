@@ -24,7 +24,13 @@ export function SEO({
   noindex = false,
 }: SEOProps) {
   const fullTitle = title.includes("MARVHL") ? title : `${title} | MARVHL`;
-  const canonicalUrl = canonical ? `${SITE_URL}${canonical}` : undefined;
+  // Trailing slash systématique : Netlify Pretty URLs sert les pages sur /blog/ et redirige
+  // /blog → /blog/ en 301. Déclarer la version slashée évite cette 301 lors du crawl Googlebot.
+  const canonicalPath =
+    canonical && canonical !== "/" && !canonical.endsWith("/")
+      ? `${canonical}/`
+      : canonical;
+  const canonicalUrl = canonicalPath ? `${SITE_URL}${canonicalPath}` : undefined;
   // Les crawlers OG (LinkedIn, Slack...) exigent une URL absolue.
   // Les imports Vite produisent des chemins relatifs (/assets/xxx.webp) — on préfixe.
   const ogImageUrl = ogImage.startsWith("http") ? ogImage : `${SITE_URL}${ogImage}`;
