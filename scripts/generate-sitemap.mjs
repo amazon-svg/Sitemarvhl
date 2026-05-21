@@ -1,78 +1,94 @@
 // scripts/generate-sitemap.mjs
-// Génère public/sitemap.xml à partir des routes statiques et des slugs de lots.
-// Lancé automatiquement avant chaque build.
+// Génère dist/sitemap.xml à partir de src/lib/site-urls* (source unique).
+// Lancé en POSTBUILD, après prerender. Garde-fou : throw si une <loc> finit
+// par "/" (sauf la racine) — un drift trailing-slash casse alors le build.
 
-import fs from 'node:fs';
-import path from 'node:path';
+import { writeFileSync, readFileSync, existsSync } from 'node:fs';
+import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { SITE_ORIGIN, STATIC_PATHS, canonicalUrl } from '../src/lib/site-urls.mjs';
+import { lotSlugs, blogPostsWithDate } from '../src/lib/site-urls-node.mjs';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT = path.resolve(__dirname, '..');
-const SITE_URL = 'https://www.marvhl.fr';
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const ROOT = join(__dirname, '..');
+const DIST = join(ROOT, 'dist');
 const TODAY = new Date().toISOString().split('T')[0];
 
-// Extraire les slugs depuis data/lots.ts sans transpiler le TS
-const lotsFile = fs.readFileSync(path.join(ROOT, 'src/app/data/lots.ts'), 'utf-8');
-const slugMatches = [...lotsFile.matchAll(/^\s{2,}slug:\s*["']([^"']+)["']/gm)];
-const slugs = slugMatches.map((m) => m[1]);
+if (!existsSync(DIST)) {
+  console.error(`✗ Dossier dist/ introuvable : ${DIST}`);
+  console.error('  generate-sitemap doit s\'exécuter après le build (postbuild).');
+  process.exit(1);
+}
 
-// Extraire slug + date des articles blog depuis content/blog/*.md
-const BLOG_DIR = path.join(ROOT, 'src/content/blog');
-const blogPosts = fs.existsSync(BLOG_DIR)
-  ? fs
-      .readdirSync(BLOG_DIR)
-      .filter((f) => f.endsWith('.md'))
-      .map((file) => {
-        const raw = fs.readFileSync(path.join(BLOG_DIR, file), 'utf-8');
-        const slug = file.replace(/\.md$/, '');
-        const dateMatch = raw.match(/^date:\s*["']?([\d-]+)["']?/m);
-        return { slug, date: dateMatch ? dateMatch[1] : TODAY };
-      })
-  : [];
+// Métadonnées par type de page (priority / changefreq). Le path reste la source
+// de vérité — on ne le re-bidouille jamais ici.
+const STATIC_META = {
+  '/': { priority: '1.0', changefreq: 'weekly' },
+  '/le-batiment': { priority: '0.8', changefreq: 'monthly' },
+  '/nos-lots': { priority: '0.9', changefreq: 'weekly' },
+  '/blog': { priority: '0.7', changefreq: 'weekly' },
+  '/contact': { priority: '0.7', changefreq: 'monthly' },
+};
 
-// Pages statiques
-const staticPages = [
-  { path: '/', priority: '1.0', changefreq: 'weekly' },
-  { path: '/le-batiment', priority: '0.8', changefreq: 'monthly' },
-  { path: '/nos-lots', priority: '0.9', changefreq: 'weekly' },
-  { path: '/blog', priority: '0.7', changefreq: 'weekly' },
-  { path: '/contact', priority: '0.7', changefreq: 'monthly' },
-];
+const blogDates = new Map(blogPostsWithDate().map((p) => [p.slug, p.date]));
 
-const lotPages = slugs.map((slug) => ({
-  path: `/lot/${slug}`,
-  priority: '0.8',
-  changefreq: 'weekly',
-}));
+function buildEntries() {
+  const entries = [];
 
-const blogPages = blogPosts.map(({ slug, date }) => ({
-  path: `/blog/${slug}`,
-  priority: '0.6',
-  changefreq: 'monthly',
-  lastmod: date, // date de publication depuis le front-matter
-}));
+  for (const p of STATIC_PATHS) {
+    entries.push({
+      path: p,
+      ...STATIC_META[p],
+      lastmod: TODAY,
+    });
+  }
+  for (const slug of lotSlugs()) {
+    entries.push({
+      path: `/lot/${slug}`,
+      priority: '0.8',
+      changefreq: 'weekly',
+      lastmod: TODAY,
+    });
+  }
+  for (const slug of blogDates.keys()) {
+    entries.push({
+      path: `/blog/${slug}`,
+      priority: '0.6',
+      changefreq: 'monthly',
+      lastmod: blogDates.get(slug) ?? TODAY,
+    });
+  }
+  return entries;
+}
 
-const allPages = [...staticPages, ...lotPages, ...blogPages];
+const entries = buildEntries();
 
-// Trailing slash systématique : Netlify Pretty URLs sert les pages sur /blog/ et redirige
-// /blog → /blog/ en 301. Déclarer les <loc> slashés évite cette 301 lors du crawl Googlebot.
-const withTrailingSlash = (p) => (p === '/' || p.endsWith('/') ? p : `${p}/`);
+// Garde-fou : aucune <loc> ne doit finir par "/" sauf l'origin nu.
+for (const e of entries) {
+  const loc = canonicalUrl(e.path);
+  if (loc !== `${SITE_ORIGIN}/` && loc.endsWith('/')) {
+    throw new Error(`[sitemap] slash final interdit : ${loc} (path: ${e.path})`);
+  }
+}
+
+const body = entries
+  .map((e) => {
+    const loc = canonicalUrl(e.path);
+    return `  <url>
+    <loc>${loc}</loc>
+    <lastmod>${e.lastmod}</lastmod>
+    <changefreq>${e.changefreq}</changefreq>
+    <priority>${e.priority}</priority>
+  </url>`;
+  })
+  .join('\n');
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${allPages
-  .map(
-    (p) => `  <url>
-    <loc>${SITE_URL}${withTrailingSlash(p.path)}</loc>
-    <lastmod>${p.lastmod ?? TODAY}</lastmod>
-    <changefreq>${p.changefreq}</changefreq>
-    <priority>${p.priority}</priority>
-  </url>`
-  )
-  .join('\n')}
+${body}
 </urlset>
 `;
 
-const outPath = path.join(ROOT, 'public/sitemap.xml');
-fs.writeFileSync(outPath, xml, 'utf-8');
-console.log(`✓ sitemap.xml généré (${allPages.length} URLs) : ${outPath}`);
+const outPath = join(DIST, 'sitemap.xml');
+writeFileSync(outPath, xml, 'utf-8');
+console.log(`✓ sitemap.xml généré (${entries.length} URLs) : ${outPath}`);

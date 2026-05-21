@@ -1,4 +1,6 @@
 import { Helmet } from "react-helmet-async";
+// @ts-expect-error — module .mjs sans types, source unique partagée avec les scripts node
+import { SITE_ORIGIN, canonicalUrl as buildCanonical } from "../../lib/site-urls.mjs";
 
 interface SEOProps {
   title: string;
@@ -11,8 +13,7 @@ interface SEOProps {
 }
 
 const SITE_NAME = "MARVHL – Bâtiment Galilée, Lormont";
-const SITE_URL = "https://www.marvhl.fr";
-const DEFAULT_OG_IMAGE = "https://www.marvhl.fr/og-image.jpg";
+const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/og-image.jpg`;
 
 export function SEO({
   title,
@@ -24,16 +25,12 @@ export function SEO({
   noindex = false,
 }: SEOProps) {
   const fullTitle = title.includes("MARVHL") ? title : `${title} | MARVHL`;
-  // Trailing slash systématique : Netlify Pretty URLs sert les pages sur /blog/ et redirige
-  // /blog → /blog/ en 301. Déclarer la version slashée évite cette 301 lors du crawl Googlebot.
-  const canonicalPath =
-    canonical && canonical !== "/" && !canonical.endsWith("/")
-      ? `${canonical}/`
-      : canonical;
-  const canonicalUrl = canonicalPath ? `${SITE_URL}${canonicalPath}` : undefined;
+  // Canonical = forme sans slash final (sauf racine), dérivée de la source unique
+  // src/lib/site-urls.mjs partagée avec sitemap + check postbuild.
+  const canonicalUrl: string | undefined = canonical ? buildCanonical(canonical) : undefined;
   // Les crawlers OG (LinkedIn, Slack...) exigent une URL absolue.
   // Les imports Vite produisent des chemins relatifs (/assets/xxx.webp) — on préfixe.
-  const ogImageUrl = ogImage.startsWith("http") ? ogImage : `${SITE_URL}${ogImage}`;
+  const ogImageUrl = ogImage.startsWith("http") ? ogImage : `${SITE_ORIGIN}${ogImage}`;
   const jsonLdArr = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : null;
 
   return (
