@@ -3,5 +3,9 @@
 https://location-bureaux-lormont.fr/*       https://www.marvhl.fr/:splat  301!
 https://www.location-bureaux-lormont.fr/*   https://www.marvhl.fr/:splat  301!
 
-# SPA fallback : toute route non matchée renvoie index.html (React Router prend le relais)
-/*  /index.html  200
+# Filet de secours : toutes les vraies routes sont pré-générées en fichiers HTML
+# plats (servis en 200 avant d'atteindre cette règle). Une URL inconnue ne matche
+# aucun fichier → on sert la page 404 pré-rendue avec un VRAI statut HTTP 404
+# (évite les « soft 404 » où une page inexistante répondait 200 + accueil).
+# 404.html ré-hydrate React Router, donc la navigation interne reste intacte.
+/*  /404.html  404

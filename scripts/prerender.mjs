@@ -57,4 +57,27 @@ for (const url of routes) {
   console.log(`✓ ${url.padEnd(40)} → ${path.relative(ROOT, outPath)}`);
 }
 
+// ── Page 404 ──
+// Rendu d'une route volontairement inexistante : React Router tombe sur la route
+// splat ("*" → NotFound, qui porte déjà <meta robots noindex>). Écrit dist/404.html,
+// servi par Netlify avec un VRAI statut HTTP 404 (cf. public/_redirects), pour
+// éviter les « soft 404 » (page inconnue renvoyée en 200) qui brouillent Google.
+{
+  const { html, helmet } = await render('/__404__');
+  const headInjection = [
+    helmet.title.toString(),
+    helmet.meta.toString(),
+    helmet.link.toString(),
+    helmet.script.toString(),
+  ]
+    .filter(Boolean)
+    .join('\n    ');
+  const page = template
+    .replace('<!--ssr-head-->', headInjection)
+    .replace('<!--ssr-outlet-->', html);
+  fs.writeFileSync(path.join(ROOT, 'dist/404.html'), page, 'utf-8');
+  console.log(`✓ ${'/__404__'.padEnd(40)} → dist/404.html`);
+  count++;
+}
+
 console.log(`\n✓ Pré-rendu terminé : ${count} pages générées.`);
