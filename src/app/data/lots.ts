@@ -206,7 +206,7 @@ export const lots: Lot[] = [
       "Taxe foncière",
     ],
     charges: [
-      { label: "Charges", value: "55 € HT/m²/an" },
+      { label: "Charges", value: "35 € HT/m²/an" },
       { label: "Impôt foncier (à la charge du preneur)", value: "24 € HT/m²/an" },
     ],
     noEngagement: true,
@@ -257,7 +257,7 @@ export const lots: Lot[] = [
       "Taxe foncière",
     ],
     charges: [
-      { label: "Charges", value: "55 € HT/m²/an" },
+      { label: "Charges", value: "35 € HT/m²/an" },
       { label: "Impôt foncier (à la charge du preneur)", value: "24 € HT/m²/an" },
     ],
     noEngagement: true,
@@ -309,7 +309,7 @@ export const lots: Lot[] = [
       "Taxe foncière",
     ],
     charges: [
-      { label: "Charges", value: "55 € HT/m²/an" },
+      { label: "Charges", value: "35 € HT/m²/an" },
       { label: "Impôt foncier (à la charge du preneur)", value: "24 € HT/m²/an" },
     ],
     noEngagement: true,
@@ -323,19 +323,19 @@ export const lots: Lot[] = [
     id: 14,
     slug: "open-space-94m2-r1-lormont",
     ref: "GAL-OS3",
-    name: "Open Space 94 m² – R+1",
+    name: "Open Space 150 m² – R+1",
     type: "open-space",
     floor: 2,
     floorLabel: "1er étage (R+1)",
-    surface: 94,
+    surface: 150,
     capacity: { min: 10, max: 20 },
-    price: 1200,
+    price: 1810,
     priceUnit: "€ HT / mois",
     status: "disponible",
     description:
-      "Open space de 94 m² au 1er étage avec 2 bureaux privatifs intégrés. Lumineux, climatisé, 20 postes de travail. Idéal pour une équipe en croissance nécessitant des espaces de confidentialité.",
+      "Open space de 150 m² au 1er étage avec 2 bureaux privatifs intégrés. Lumineux, climatisé, 20 postes de travail. Idéal pour une équipe en croissance nécessitant des espaces de confidentialité.",
     longDescription:
-      "Open-space de 94 m² au 1er étage du bâtiment Galilée avec 2 bureaux privatifs intégrés. Conçu pour accueillir jusqu'à 20 postes de travail, il offre une flexibilité organisationnelle rare : open-space pour les équipes, bureaux fermés pour les réunions sensibles ou le travail en concentration. Baigné de lumière naturelle, climatisé, raccordé à la fibre optique, sécurisé par contrôle d'accès et vidéosurveillance 24h/7j, 26 places de parking privatives. Loyer tout compris (électricité des communs, eau, ménage, taxe foncière, domiciliation, entretien des espaces verts). Location directe propriétaire — pas de frais d'agence.",
+      "Open-space de 150 m² au 1er étage du bâtiment Galilée avec 2 bureaux privatifs intégrés. Conçu pour accueillir jusqu'à 20 postes de travail, il offre une flexibilité organisationnelle rare : open-space pour les équipes, bureaux fermés pour les réunions sensibles ou le travail en concentration. Baigné de lumière naturelle, climatisé, raccordé à la fibre optique, sécurisé par contrôle d'accès et vidéosurveillance 24h/7j, 26 places de parking privatives. Loyer tout compris (électricité des communs, eau, ménage, taxe foncière, domiciliation, entretien des espaces verts). Location directe propriétaire — pas de frais d'agence.",
     features: [
       "Open space 20 postes de travail",
       "2 bureaux privatifs intégrés",
@@ -359,15 +359,15 @@ export const lots: Lot[] = [
       "Taxe foncière",
     ],
     charges: [
-      { label: "Charges", value: "55 € HT/m²/an" },
+      { label: "Charges", value: "35 € HT/m²/an" },
       { label: "Impôt foncier (à la charge du preneur)", value: "24 € HT/m²/an" },
     ],
     noEngagement: true,
     transport: "Tram ligne A – arrêt Les Lauriers",
     images: [lotOS3Img],
-    metaTitle: "Open Space 94 m² à louer Lormont (33310) R+1 – Bâtiment Galilée | MARVHL",
+    metaTitle: "Open Space 150 m² à louer Lormont (33310) R+1 – Bâtiment Galilée | MARVHL",
     metaDescription:
-      "Open-space 94 m² au 1er étage, 20 postes, 2 bureaux privatifs intégrés. Loyer tout inclus, sans frais d'agence. À partir de 1 200 € HT/mois. Lormont.",
+      "Open-space 150 m² au 1er étage, 20 postes, 2 bureaux privatifs intégrés. Loyer tout inclus, sans frais d'agence. À partir de 1 810 € HT/mois. Lormont.",
   },
 ];
 

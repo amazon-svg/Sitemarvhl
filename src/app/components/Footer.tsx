@@ -72,7 +72,7 @@ export function Footer() {
                 { to: "/lot/open-space-95m2-rdc-lormont", label: "Open Space 95 m² – RDC" },
                 { to: "/lot/open-space-145m2-rdc-lormont", label: "Open Space 145 m² – RDC" },
                 { to: "/lot/bureaux-60m2-r1-lormont", label: "Bureaux 60 m² – R+1" },
-                { to: "/lot/open-space-94m2-r1-lormont", label: "Open Space 94 m² – R+1" },
+                { to: "/lot/open-space-94m2-r1-lormont", label: "Open Space 150 m² – R+1" },
               ].map((link) => (
                 <li key={link.to}>
                   <Link
