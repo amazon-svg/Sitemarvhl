@@ -3,6 +3,9 @@
 https://location-bureaux-lormont.fr/*       https://www.marvhl.fr/:splat  301!
 https://www.location-bureaux-lormont.fr/*   https://www.marvhl.fr/:splat  301!
 
+# Redirections 301 d'URLs (changements de slug) — préserve le référencement.
+/lot/open-space-94m2-r1-lormont   /lot/open-space-150m2-r1-lormont   301!
+
 # Filet de secours : toutes les vraies routes sont pré-générées en fichiers HTML
 # plats (servis en 200 avant d'atteindre cette règle). Une URL inconnue ne matche
 # aucun fichier → on sert la page 404 pré-rendue avec un VRAI statut HTTP 404

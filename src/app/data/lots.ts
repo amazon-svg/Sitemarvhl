@@ -321,7 +321,7 @@ export const lots: Lot[] = [
   },
   {
     id: 14,
-    slug: "open-space-94m2-r1-lormont",
+    slug: "open-space-150m2-r1-lormont",
     ref: "GAL-OS3",
     name: "Open Space 150 m² – R+1",
     type: "open-space",
