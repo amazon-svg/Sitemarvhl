@@ -329,7 +329,7 @@ export const lots: Lot[] = [
     floorLabel: "1er étage (R+1)",
     surface: 150,
     capacity: { min: 10, max: 20 },
-    price: 1810,
+    price: 1860,
     priceUnit: "€ HT / mois",
     status: "disponible",
     description:
@@ -367,7 +367,7 @@ export const lots: Lot[] = [
     images: [lotOS3Img],
     metaTitle: "Open Space 150 m² à louer Lormont (33310) R+1 – Bâtiment Galilée | MARVHL",
     metaDescription:
-      "Open-space 150 m² au 1er étage, 20 postes, 2 bureaux privatifs intégrés. Loyer tout inclus, sans frais d'agence. À partir de 1 810 € HT/mois. Lormont.",
+      "Open-space 150 m² au 1er étage, 20 postes, 2 bureaux privatifs intégrés. Loyer tout inclus, sans frais d'agence. À partir de 1 860 € HT/mois. Lormont.",
   },
 ];
 
