@@ -321,21 +321,21 @@ export const lots: Lot[] = [
   },
   {
     id: 14,
-    slug: "open-space-150m2-r1-lormont",
+    slug: "open-space-160m2-r1-lormont",
     ref: "GAL-OS3",
-    name: "Open Space 150 m² – R+1",
+    name: "Open Space 160 m² – R+1",
     type: "open-space",
     floor: 2,
     floorLabel: "1er étage (R+1)",
-    surface: 150,
+    surface: 160,
     capacity: { min: 10, max: 20 },
-    price: 1860,
+    price: 1950,
     priceUnit: "€ HT / mois",
     status: "disponible",
     description:
-      "Open space de 150 m² au 1er étage avec 2 bureaux privatifs intégrés. Lumineux, climatisé, 20 postes de travail. Idéal pour une équipe en croissance nécessitant des espaces de confidentialité.",
+      "Open space de 160 m² au 1er étage avec 2 bureaux privatifs intégrés. Lumineux, climatisé, 20 postes de travail. Idéal pour une équipe en croissance nécessitant des espaces de confidentialité.",
     longDescription:
-      "Open-space de 150 m² au 1er étage du bâtiment Galilée avec 2 bureaux privatifs intégrés. Conçu pour accueillir jusqu'à 20 postes de travail, il offre une flexibilité organisationnelle rare : open-space pour les équipes, bureaux fermés pour les réunions sensibles ou le travail en concentration. Baigné de lumière naturelle, climatisé, raccordé à la fibre optique, sécurisé par contrôle d'accès et vidéosurveillance 24h/7j, 26 places de parking privatives. Loyer tout compris (électricité des communs, eau, ménage, taxe foncière, domiciliation, entretien des espaces verts). Location directe propriétaire — pas de frais d'agence.",
+      "Open-space de 160 m² au 1er étage du bâtiment Galilée avec 2 bureaux privatifs intégrés. Conçu pour accueillir jusqu'à 20 postes de travail, il offre une flexibilité organisationnelle rare : open-space pour les équipes, bureaux fermés pour les réunions sensibles ou le travail en concentration. Baigné de lumière naturelle, climatisé, raccordé à la fibre optique, sécurisé par contrôle d'accès et vidéosurveillance 24h/7j, 26 places de parking privatives. Loyer tout compris (électricité des communs, eau, ménage, taxe foncière, domiciliation, entretien des espaces verts). Location directe propriétaire — pas de frais d'agence.",
     features: [
       "Open space 20 postes de travail",
       "2 bureaux privatifs intégrés",
@@ -365,9 +365,9 @@ export const lots: Lot[] = [
     noEngagement: true,
     transport: "Tram ligne A – arrêt Les Lauriers",
     images: [lotOS3Img],
-    metaTitle: "Open Space 150 m² à louer Lormont (33310) R+1 – Bâtiment Galilée | MARVHL",
+    metaTitle: "Open Space 160 m² à louer Lormont (33310) R+1 – Bâtiment Galilée | MARVHL",
     metaDescription:
-      "Open-space 150 m² au 1er étage, 20 postes, 2 bureaux privatifs intégrés. Loyer tout inclus, sans frais d'agence. À partir de 1 860 € HT/mois. Lormont.",
+      "Open-space 160 m² au 1er étage, 20 postes, 2 bureaux privatifs intégrés. Loyer tout inclus, sans frais d'agence. À partir de 1 950 € HT/mois. Lormont.",
   },
 ];
 
