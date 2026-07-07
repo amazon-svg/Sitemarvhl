@@ -15,25 +15,90 @@ import { SEO } from "../components/SEO";
 import { LotCard } from "../components/LotCard";
 import { building } from "../data/building";
 import { lots } from "../data/lots";
+// @ts-expect-error — module .mjs sans types, source unique partagée avec les scripts node
+import { SITE_ORIGIN } from "../../lib/site-urls.mjs";
 import buildingFrontImg from "figma:asset/6a3f5bf8b62646fdb9bd10021224db52cec44dd1.webp";
 import buildingTerraceImg from "figma:asset/f5d1a5760fa4243945e5fe33696439688970d9fa.webp";
 import buildingRedImg from "figma:asset/50327e10fa0874324564e7038562eb8b30b891cb.webp";
 
+// Loyers et disponibilité dérivés des données (restent synchro si un lot bouge).
+const prices = lots.map((l) => l.price);
+const minPrice = Math.min(...prices);
+const maxPrice = Math.max(...prices);
+const availableCount = lots.filter((l) => l.status === "disponible").length;
+
 const homeJsonLd = {
   "@context": "https://schema.org",
   "@type": "RealEstateAgent",
+  "@id": "https://www.marvhl.fr/#organisation",
   name: "MARVHL",
   description: building.description,
   url: "https://www.marvhl.fr",
+  image: `${SITE_ORIGIN}${buildingFrontImg}`,
   address: {
     "@type": "PostalAddress",
     streetAddress: building.address.street,
     addressLocality: building.address.city,
     postalCode: building.address.postalCode,
+    addressRegion: building.address.region,
     addressCountry: "FR",
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 44.87,
+    longitude: -0.52,
+  },
+  // Zone de chalandise — aide Google à rattacher le site aux requêtes locales.
+  areaServed: [
+    { "@type": "City", name: "Lormont" },
+    { "@type": "City", name: "Bordeaux" },
+    { "@type": "City", name: "Cenon" },
+    { "@type": "City", name: "Floirac" },
+    { "@type": "AdministrativeArea", name: "Bordeaux Métropole" },
+  ],
+  priceRange: `${minPrice}–${maxPrice} € HT / mois`,
+  currenciesAccepted: "EUR",
   telephone: building.phone,
   email: building.email,
+};
+
+// FAQ — le texte ci-dessous DOIT rester identique à la section visible plus bas
+// (exigence Google pour le rich result FAQ). Source unique = ce tableau.
+const faqItems = [
+  {
+    q: "Quels bureaux peut-on louer à Lormont dans le bâtiment Galilée ?",
+    a: `Le bâtiment Galilée propose ${availableCount} lots à louer : des bureaux privatifs de 20 à 60 m² pour 1 à plusieurs postes, et des open-spaces de 95 à 160 m², au rez-de-chaussée comme au 1er étage. Tous sont disponibles immédiatement.`,
+  },
+  {
+    q: "Combien coûte la location d'un bureau à Lormont chez MARVHL ?",
+    a: `Les loyers s'échelonnent de ${minPrice} € HT/mois pour un bureau de 20 m² à ${maxPrice} € HT/mois pour un open-space de 160 m². Le loyer est tout inclus : charges, eau, électricité des parties communes, ménage des communs, taxe foncière et domiciliation.`,
+  },
+  {
+    q: "Y a-t-il des frais d'agence pour louer un bureau à Lormont ?",
+    a: "Non. La location se fait en direct avec le propriétaire, sans frais d'agence ni intermédiaire, et sans engagement de longue durée.",
+  },
+  {
+    q: "Le parking est-il compris dans la location ?",
+    a: `Le bâtiment dispose de ${building.parking.total} places de parking (${building.parking.indoor} intérieures et ${building.parking.outdoor} extérieures), dont des bornes de recharge pour véhicules électriques.`,
+  },
+  {
+    q: "Comment accéder au bâtiment Galilée à Lormont ?",
+    a: `Le bâtiment se situe ${building.address.full}. Il est desservi par le tram A (arrêt Les Lauriers, 8 min à pied), la rocade A630 sortie 23 (5 min) et se trouve à 20 min du centre de Bordeaux.`,
+  },
+  {
+    q: "Les bureaux sont-ils accessibles 24h/24 ?",
+    a: "Oui, les espaces sont accessibles 24h/24 et 7j/7, sécurisés par contrôle d'accès et vidéosurveillance.",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map(({ q, a }) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: { "@type": "Answer", text: a },
+  })),
 };
 
 const stats = [
@@ -54,7 +119,7 @@ export function Home() {
         description={building.shortDescription}
         canonical="/"
         ogImage={buildingFrontImg}
-        jsonLd={homeJsonLd}
+        jsonLd={[homeJsonLd, faqJsonLd]}
       />
 
       {/* ── Bandeau introductif compact ── */}
@@ -251,7 +316,7 @@ export function Home() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: Train, label: "Tram B", value: building.access.tram },
+              { icon: Train, label: "Tram A", value: building.access.tram },
               { icon: Car, label: "Rocade", value: building.access.car },
               { icon: MapPin, label: "Bordeaux centre", value: building.access.bordeaux },
               { icon: Shield, label: "Parking", value: `${building.parking.total} places dont bornes de recharge` },
@@ -322,6 +387,35 @@ export function Home() {
                 </Link>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── FAQ ── (contenu synchronisé avec faqItems / faqJsonLd) */}
+      <section className="py-16 sm:py-20 bg-gray-50" aria-labelledby="section-faq">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <p className="text-[#C9A84C] text-sm font-semibold uppercase tracking-widest mb-2">
+              Questions fréquentes
+            </p>
+            <h2 id="section-faq" className="text-2xl sm:text-3xl font-bold text-[#0F2D52]">
+              Louer un bureau à Lormont : vos questions
+            </h2>
+          </div>
+
+          <div className="divide-y divide-gray-200 border-y border-gray-200">
+            {faqItems.map(({ q, a }) => (
+              <details key={q} className="group py-4">
+                <summary className="flex items-center justify-between gap-4 cursor-pointer list-none text-[#0F2D52] font-semibold text-base sm:text-lg">
+                  {q}
+                  <ArrowRight
+                    size={18}
+                    className="shrink-0 text-[#C9A84C] transition-transform duration-200 group-open:rotate-90"
+                  />
+                </summary>
+                <p className="text-gray-600 text-sm leading-relaxed mt-3">{a}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>

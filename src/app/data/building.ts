@@ -13,7 +13,7 @@ export const building = {
     googleMaps: "https://maps.google.com/?q=12+rue+Cantelaudette+33310+Lormont",
   },
   description:
-    "Le bâtiment Galilée est un immeuble de bureaux moderne situé à Lormont, dans la métropole bordelaise. Conçu pour répondre aux exigences des entreprises contemporaines, il propose des espaces de travail modulables, lumineux et entièrement équipés, accessibles depuis Bordeaux en moins de 15 minutes.",
+    "Le bâtiment Galilée est un immeuble de bureaux moderne situé à Lormont, dans la métropole bordelaise. Conçu pour répondre aux exigences des entreprises contemporaines, il propose des espaces de travail modulables, lumineux et entièrement équipés, accessibles depuis Bordeaux en une vingtaine de minutes.",
   shortDescription:
     "Bureaux et open-spaces à louer à Lormont, 20 min de Bordeaux. Tout inclus, sans frais d'agence, parking privatif. Location directe propriétaire, accès 24h/7j.",
   totalSurface: 760,
@@ -30,7 +30,7 @@ export const building = {
     tram: "Tram ligne A – arrêt Les Lauriers (8 min à pied)",
     car: "Rocade A630 – sortie 23 Lormont (5 min)",
     highway: "A10 – échangeur Lormont (8 min)",
-    bordeaux: "15 min depuis le centre de Bordeaux",
+    bordeaux: "20 min depuis le centre de Bordeaux",
   },
   amenities: [
     "Fibre optique très haut débit",
