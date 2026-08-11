@@ -218,3 +218,5 @@ Pour évaluer concrètement ce que donne l'installation à Lormont sur votre cas
 ---
 
 *Article rédigé en avril 2026 par l'équipe MARVHL, propriétaire-gestionnaire du Bâtiment Galilée à Lormont (Bordeaux Métropole).*
+
+*À lire aussi : [Quelle surface de bureau pour quelle taille d'équipe ?](/blog/surface-bureau-par-taille-equipe) · [Bureau tout inclus ou traditionnel : le vrai calcul pour une PME](/blog/bureau-tout-inclus-vs-traditionnel-calcul-pme) · [Combien coûte vraiment un déménagement d'entreprise ?](/blog/cout-demenagement-entreprise-guide)*

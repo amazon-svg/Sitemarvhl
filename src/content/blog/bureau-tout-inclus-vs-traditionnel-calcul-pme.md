@@ -197,3 +197,5 @@ Pour une PME qui cherche entre 20 et 143 m² à Lormont (20 min de Bordeaux), [o
 ---
 
 *Article rédigé en avril 2026 par l'équipe MARVHL, propriétaire-gestionnaire du Bâtiment Galilée à Lormont (Bordeaux Métropole).*
+
+*À lire aussi : [Combien coûte vraiment un déménagement d'entreprise ?](/blog/cout-demenagement-entreprise-guide) · [Quelle surface de bureau pour quelle taille d'équipe ?](/blog/surface-bureau-par-taille-equipe) · [Louer un bureau à Bordeaux rive droite : comparatif Lormont, Cenon, Floirac, Bègles](/blog/bureau-bordeaux-rive-droite-comparatif-2026)*

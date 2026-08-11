@@ -205,3 +205,5 @@ Pour voir par vous-même ce que vaut le rapport qualité/prix d'une location riv
 ---
 
 *Article rédigé en avril 2026 par l'équipe MARVHL, propriétaire-gestionnaire du Bâtiment Galilée à Lormont (Bordeaux Métropole).*
+
+*À lire aussi : [Quelle surface de bureau pour quelle taille d'équipe ?](/blog/surface-bureau-par-taille-equipe) · [Bureau tout inclus ou traditionnel : le vrai calcul pour une PME](/blog/bureau-tout-inclus-vs-traditionnel-calcul-pme) · [Centre d'appels à Bordeaux : budget, critères et solutions](/blog/centre-d-appels-a-bordeaux-implantation-2026)*

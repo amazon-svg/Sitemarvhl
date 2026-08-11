@@ -214,3 +214,5 @@ Pour un plateau de 15 agents, cela représente un coût immobilier et infrastruc
 ---
 
 *Article rédigé en avril 2026 par l'équipe MARVHL, propriétaire-gestionnaire du Bâtiment Galilée à Lormont (Bordeaux Métropole).*
+
+*À lire aussi : [Quelle surface de bureau pour quelle taille d'équipe ?](/blog/surface-bureau-par-taille-equipe) · [Open-space à louer à Bordeaux : 5 critères qui déterminent votre productivité et votre budget](/blog/open-space-a-louer-bordeaux-criteres) · [Combien coûte vraiment un déménagement d'entreprise ?](/blog/cout-demenagement-entreprise-guide)*
