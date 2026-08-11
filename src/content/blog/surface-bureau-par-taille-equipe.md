@@ -2,7 +2,7 @@
 title: "Quelle surface de bureau pour quelle taille d'équipe ? Le guide des ratios réels"
 slug: "surface-bureau-par-taille-equipe"
 description: "Combien de m² par salarié ? Les ratios réels par type d'espace, la surface à chercher selon la taille de votre équipe (3 à 20 personnes) et les pièges du bail."
-date: "2026-08-15"
+date: "2026-08-11"
 author: "MARVHL"
 category: "Guide pratique"
 tags:

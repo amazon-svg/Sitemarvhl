@@ -2,7 +2,7 @@
 title: "Combien coûte vraiment un déménagement d'entreprise ? Le guide anti-stress"
 slug: "cout-demenagement-entreprise-guide"
 description: "Déménager vos bureaux coûte 2 à 3 fois le devis du déménageur. Les 6 postes de coût, les fourchettes par taille d'équipe et la check-list en 8 semaines."
-date: "2026-08-15"
+date: "2026-08-11"
 author: "MARVHL"
 category: "Guide pratique"
 tags:
@@ -99,4 +99,4 @@ C'est exactement le positionnement du **Bâtiment Galilée à Lormont**, à 20 m
 
 ---
 
-*À lire aussi : [Bureau tout inclus ou traditionnel : le vrai calcul pour une PME](/blog/bureau-tout-inclus-vs-traditionnel-calcul-pme) · [Louer un bureau à Bordeaux rive droite : comparatif Lormont, Cenon, Floirac, Bègles](/blog/bureau-bordeaux-rive-droite-comparatif-2026) · [Open-space à louer à Bordeaux : 5 critères](/blog/open-space-a-louer-bordeaux-criteres)*
+*À lire aussi : [Quelle surface de bureau pour quelle taille d'équipe ?](/blog/surface-bureau-par-taille-equipe) · [Bureau tout inclus ou traditionnel : le vrai calcul pour une PME](/blog/bureau-tout-inclus-vs-traditionnel-calcul-pme) · [Louer un bureau à Bordeaux rive droite : comparatif Lormont, Cenon, Floirac, Bègles](/blog/bureau-bordeaux-rive-droite-comparatif-2026) · [Open-space à louer à Bordeaux : 5 critères](/blog/open-space-a-louer-bordeaux-criteres)*
