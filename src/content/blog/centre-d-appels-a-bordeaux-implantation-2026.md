@@ -12,7 +12,7 @@ tags:
   - back-office
   - immobilier d'entreprise
 reading_time: 7
-og_image: "/og-image.jpg"
+og_image: "/og/centre-d-appels-a-bordeaux-implantation-2026.jpg"
 ---
 
 # Centre d'appels à Bordeaux : budget, critères et solutions pour s'implanter en 2026

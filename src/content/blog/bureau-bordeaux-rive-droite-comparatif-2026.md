@@ -13,7 +13,7 @@ tags:
   - Bègles
   - location bureau
 reading_time: 6
-og_image: "/og-image.jpg"
+og_image: "/og/bureau-bordeaux-rive-droite-comparatif-2026.jpg"
 ---
 
 # Louer un bureau à Bordeaux rive droite en 2026 : comparatif Lormont, Cenon, Floirac, Bègles

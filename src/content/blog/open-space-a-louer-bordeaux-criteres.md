@@ -12,7 +12,7 @@ tags:
   - PME
   - centre d'appels
 reading_time: 8
-og_image: "/og-image.jpg"
+og_image: "/og/open-space-a-louer-bordeaux-criteres.jpg"
 ---
 
 # Open-space à louer à Bordeaux : 5 critères qui déterminent vraiment votre productivité et votre budget

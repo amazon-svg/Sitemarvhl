@@ -12,7 +12,7 @@ tags:
   - budget immobilier
   - charges
 reading_time: 6
-og_image: "/og-image.jpg"
+og_image: "/og/bureau-tout-inclus-vs-traditionnel-calcul-pme.jpg"
 ---
 
 # Bureau tout inclus ou traditionnel : le vrai calcul pour une PME en 2026

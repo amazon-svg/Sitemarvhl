@@ -12,7 +12,7 @@ tags:
   - open-space
   - Bordeaux
 reading_time: 6
-og_image: "/og-image.jpg"
+og_image: "/og/surface-bureau-par-taille-equipe.jpg"
 mot_cle_principal: "surface bureau par salarié"
 mots_cles_secondaires: ["combien de m² par personne bureau", "surface open space par poste", "louer bureau taille équipe Bordeaux"]
 ---

@@ -12,7 +12,7 @@ tags:
   - transfert de locaux
   - Bordeaux
 reading_time: 7
-og_image: "/og-image.jpg"
+og_image: "/og/cout-demenagement-entreprise-guide.jpg"
 mot_cle_principal: "coût déménagement entreprise"
 mots_cles_secondaires: ["déménagement bureau Bordeaux", "budget déménagement PME", "transfert de locaux professionnels"]
 ---
