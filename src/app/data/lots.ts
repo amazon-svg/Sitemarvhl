@@ -53,9 +53,9 @@ export const lots: Lot[] = [
     priceUnit: "€ HT / mois",
     status: "disponible",
     description:
-      "Bureau privatif de 21 m² au 1er étage, climatisé et accessible 24h/7j. Idéal pour un professionnel libéral, une startup ou une petite équipe.",
+      "Le moins cher des trois bureaux privatifs du 1er étage : 21 m² climatisés, accès sécurisé 24h/7j, pour un professionnel seul, un binôme ou une petite équipe de 3.",
     longDescription:
-      "Bureau privatif de 21 m² situé au 1er étage du bâtiment Galilée. Climatisé, raccordé à la fibre optique (abonnement à la charge du locataire), sécurisé par contrôle d'accès et vidéosurveillance, accessible 24h/7j. Livré non meublé pour vous laisser libre d'aménager l'espace selon vos besoins. Le loyer est tout compris (électricité des communs, eau, ménage des parties communes, taxe foncière, domiciliation, entretien des espaces verts). Location directe propriétaire — pas de frais d'agence, pas d'intermédiaire.",
+      "Ce bureau de 21 m² occupe le 1er étage du bâtiment Galilée, aux côtés de deux bureaux voisins de taille comparable (20 et 22 m²) — c'est le moins cher des trois. Climatisation, fibre optique (abonnement à la charge du locataire), contrôle d'accès et vidéosurveillance assurent un usage autonome 24h/24 et 7j/7. Livré non meublé, pour un aménagement libre. Loyer tout compris : électricité et eau des communs, ménage des parties communes, taxe foncière, domiciliation, entretien des espaces verts. Location directe auprès du propriétaire, sans frais d'agence ni intermédiaire.",
     features: [
       "Climatisation",
       "Fibre optique (abonnement à la charge du locataire)",
@@ -139,9 +139,9 @@ export const lots: Lot[] = [
     priceUnit: "€ HT / mois",
     status: "disponible",
     description:
-      "Bureau privatif de 22 m² au 1er étage, climatisé et accessible 24h/7j. Idéal pour un professionnel libéral, une startup ou une petite équipe.",
+      "Le plus grand des trois bureaux privatifs du 1er étage : 22 m² climatisés, accès sécurisé 24h/7j, pour un professionnel libéral, une startup ou une équipe jusqu'à 3 personnes.",
     longDescription:
-      "Bureau privatif de 22 m² situé au 1er étage du bâtiment Galilée. Climatisé, raccordé à la fibre optique (abonnement à la charge du locataire), sécurisé par contrôle d'accès et vidéosurveillance, accessible 24h/7j. Livré non meublé pour vous laisser libre d'aménager l'espace selon vos besoins. Le loyer est tout compris (électricité des communs, eau, ménage des parties communes, taxe foncière, domiciliation, entretien des espaces verts). Location directe propriétaire — pas de frais d'agence, pas d'intermédiaire.",
+      "Avec 22 m², c'est le plus spacieux des trois bureaux du 1er étage du bâtiment Galilée (aux côtés des 20 et 21 m² voisins). Climatisé, raccordé à la fibre optique (abonnement à la charge du locataire), sécurisé par contrôle d'accès et vidéosurveillance, accessible 24h/24 et 7j/7. Livré non meublé pour un aménagement libre. Loyer tout compris : électricité et eau des communs, ménage des parties communes, taxe foncière, domiciliation, entretien des espaces verts. Location directe propriétaire — pas de frais d'agence, pas d'intermédiaire.",
     features: [
       "Climatisation",
       "Fibre optique (abonnement à la charge du locataire)",
