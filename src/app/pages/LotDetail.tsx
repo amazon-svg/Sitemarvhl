@@ -296,7 +296,7 @@ export function LotDetail() {
                   { label: "Parking", value: `${building.parking.total} places` },
                   { label: "Accès transport", value: lot.transport ?? building.access.tram.split("–")[1]?.trim() ?? building.access.tram },
                   { label: "Fibre", value: "Disponible" },
-                  { label: "PMR", value: "Accessible" },
+                  { label: "PMR", value: lot.floor === 1 ? "Accessible" : "Rez-de-chaussée uniquement (étage sans ascenseur)" },
                 ].map(({ label, value }) => (
                   <div key={label}>
                     <dt className="text-xs text-gray-400 uppercase tracking-wide mb-1">{label}</dt>

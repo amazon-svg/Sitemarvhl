@@ -38,7 +38,7 @@ export const building = {
     "Terrasse et espaces verts",
     "Espaces détente et cuisine équipée",
     "Sécurité 24h/24 – vidéosurveillance",
-    "Accès PMR",
+    "Accès PMR au rez-de-chaussée",
   ],
   phone: "07 56 80 64 04",
   email: "contact.marvhl@gmail.com",
