@@ -75,7 +75,7 @@ const faqItems = [
   },
   {
     q: "Y a-t-il des frais d'agence pour louer un bureau à Lormont ?",
-    a: "Non. La location se fait en direct avec le propriétaire, sans frais d'agence ni intermédiaire, et sans engagement de longue durée.",
+    a: "Non. La location se fait en direct avec le propriétaire, sans frais d'agence ni intermédiaire, avec un bail 3-6-9.",
   },
   {
     q: "Le parking est-il compris dans la location ?",

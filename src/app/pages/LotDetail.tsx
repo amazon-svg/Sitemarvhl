@@ -222,7 +222,7 @@ export function LotDetail() {
                 </div>
                 <div className="flex items-center gap-2 text-gray-600 text-sm">
                   <Users size={16} className="text-[#C9A84C]" />
-                  <span>{lot.capacity.min}{lot.capacity.max} postes de travail</span>
+                  <span>{lot.capacity.min} à {lot.capacity.max} postes de travail</span>
                 </div>
                 <div className="flex items-center gap-2 text-gray-600 text-sm">
                   <MapPin size={16} className="text-[#C9A84C]" />
@@ -256,7 +256,7 @@ export function LotDetail() {
               <div>
                 <div className="flex items-center gap-2 mb-4">
                   <Gift size={18} className="text-[#C9A84C]" />
-                  <h2 className="text-lg font-bold text-[#0F2D52]">Inclus dans le loyer</h2>
+                  <h2 className="text-lg font-bold text-[#0F2D52]">Compris dans le montant mensuel</h2>
                 </div>
                 <div className="bg-emerald-50 border border-emerald-100 rounded-xl p-5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
