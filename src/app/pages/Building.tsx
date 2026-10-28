@@ -163,9 +163,9 @@ export function Building() {
               },
               {
                 icon: Maximize2,
-                title: "Du bureau individuel à l'open-space 145 m²",
+                title: "Du bureau individuel à l'open-space 160 m²",
                 body:
-                  "Freelance, PME en croissance, centre d'appels, back-office : des lots de 20 à 145 m², louables séparément ou combinables.",
+                  "Freelance, PME en croissance, centre d'appels, back-office : des lots de 20 à 160 m², louables séparément ou combinables.",
               },
             ].map(({ icon: Icon, title, body }) => (
               <div

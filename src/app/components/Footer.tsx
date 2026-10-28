@@ -70,7 +70,7 @@ export function Footer() {
                 { to: "/lot/bureau-20m2-r1-lormont", label: "Bureau 20 m² – R+1" },
                 { to: "/lot/bureau-22m2-r1-lormont", label: "Bureau 22 m² – R+1" },
                 { to: "/lot/open-space-95m2-rdc-lormont", label: "Open Space 95 m² – RDC" },
-                { to: "/lot/open-space-145m2-rdc-lormont", label: "Open Space 145 m² – RDC" },
+                { to: "/lot/open-space-143m2-rdc-lormont", label: "Open Space 143 m² – RDC" },
                 { to: "/lot/bureaux-60m2-r1-lormont", label: "Bureaux 60 m² – R+1" },
                 { to: "/lot/open-space-160m2-r1-lormont", label: "Open Space 160 m² – R+1" },
               ].map((link) => (
