@@ -194,7 +194,7 @@ Passez 15 minutes à regarder par la fenêtre, écouter le bruit, tester le sign
 
 Chez MARVHL, nous proposons trois open-spaces à Lormont, à 20 minutes du centre de Bordeaux par la rocade, avec un positionnement qui répond directement aux critères précédents :
 
-- **Un seul loyer tout inclus** (électricité, climatisation, eau, ménage, taxe foncière, domiciliation) → coût total maîtrisé dès la signature
+- **Un seul montant mensuel tout compris** (loyer, charges — électricité, climatisation, eau, nettoyage des parties communes, domiciliation — et taxe foncière) → coût total maîtrisé dès la signature
 - **Location directe propriétaire, sans frais d'agence** → économie immédiate d'un mois de loyer
 - **Trois configurations** de 94 m² (avec 2 bureaux privatifs intégrés), 117 m² (open-space + bureau direction) et 143 m² (grand plateau, 2 entrées distinctes, accès terrasse)
 - **Parking privatif de 26 places**, fibre optique, climatisation récente, accès 24h/7j

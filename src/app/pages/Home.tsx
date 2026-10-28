@@ -71,7 +71,7 @@ const faqItems = [
   },
   {
     q: "Combien coûte la location d'un bureau à Lormont chez MARVHL ?",
-    a: `Les loyers s'échelonnent de ${minPrice} € HT/mois pour un bureau de 20 m² à ${maxPrice} € HT/mois pour un open-space de 160 m². Le loyer est tout inclus : charges, eau, électricité des parties communes, ménage des communs, taxe foncière et domiciliation.`,
+    a: `Les loyers s'échelonnent de ${minPrice} € HT/mois pour un bureau de 20 m² à ${maxPrice} € HT/mois pour un open-space de 160 m². S'y ajoutent les charges (35 € HT/m²/an) et la taxe foncière (24 € HT/m²/an), réunies avec le loyer en un seul montant mensuel qui couvre l'eau, l'électricité des parties communes, le nettoyage des parties communes et la domiciliation.`,
   },
   {
     q: "Y a-t-il des frais d'agence pour louer un bureau à Lormont ?",

@@ -202,14 +202,14 @@ Avant de signer un bail pour votre centre d'appels à Bordeaux, passez en revue 
 
 Notre **grand open-space de 143 m²** au rez-de-chaussée a été pensé pour ce type d'activité :
 
-- **12 à 15 postes** en configuration standard, jusqu'à 18 en densifié
+- **10 à 12 postes** de travail sur 143 m²
 - **2 entrées distinctes** (pratique pour séparer flux agents et flux visiteurs)
 - **Accès direct à la terrasse** (vraie valeur ajoutée pour les pauses)
 - **Climatisation récente**, fibre optique raccordée, **parking 26 places privatives gratuites**
 - **Accès 24h/7j**, contrôle d'accès et vidéosurveillance
-- **Loyer à partir de 1 800 €/mois tout inclus**, location directe propriétaire, sans frais d'agence
+- **2 431 € HT/mois tout compris** (loyer, charges et taxe foncière), location directe propriétaire, sans frais d'agence
 
-Pour un plateau de 15 agents, cela représente un coût immobilier et infrastructure d'environ **120 €/poste/mois** — nettement sous la moyenne bordelaise. [Demandez une visite](/contact) pour estimer concrètement votre besoin.
+Pour un plateau de 12 agents, cela représente un coût immobilier et infrastructure d'environ **200 € HT par poste et par mois**, charges et taxe foncière comprises. [Demandez une visite](/contact) pour estimer concrètement votre besoin.
 
 ---
 

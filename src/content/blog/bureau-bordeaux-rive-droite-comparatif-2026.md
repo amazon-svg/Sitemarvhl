@@ -207,7 +207,7 @@ Votre choix dépend principalement de trois variables :
 
 Chez MARVHL, nous sommes implantés à Lormont, **12 rue Cantelaudette**, dans le Parc d'Activités de la Gardette. Notre positionnement correspond à la combinaison la plus demandée par les PME de services aujourd'hui :
 
-- **Prix maîtrisé** : à partir de 250 €/mois pour un bureau individuel, 1 200 €/mois pour un open-space, **tout inclus**
+- **Prix maîtrisé** : à partir de 343 € HT/mois pour un bureau individuel, 1 617 € HT/mois pour un open-space, **tout compris** (loyer, charges et taxe foncière)
 - **Accès idéal** : rocade sortie 2 à 1 minute, bus Lianes 7 à 300 m, tram A à 800 m
 - **Parking** : 26 places privatives gratuites pour les occupants
 - **Équipements complets** : climatisation neuve, fibre optique, cuisine équipée, terrasse, accès 24h/7j

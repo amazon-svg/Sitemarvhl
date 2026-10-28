@@ -88,7 +88,7 @@ Les lots disponibles à Lormont couvrent l'ensemble des configurations, avec cui
 | Open-space RDC + bureau attenant | 95 m² + 22 m², accès PMR | 9 à 12 postes + bureau de direction |
 | Grand plateau RDC | 143 m², 2 entrées distinctes, accès terrasse | 12 à 15 postes |
 
-Le loyer inclut électricité, chauffage et climatisation, eau, ménage des parties communes, domiciliation, taxe foncière et entretien des espaces verts. Accès sécurisé 24h/24, fibre optique, 26 places de parking privatives, terrasse. Location en direct propriétaire, **sans frais d'agence**, bail 3/6/9, disponibilité immédiate.
+Un seul montant mensuel réunit le loyer, les charges (électricité, chauffage et climatisation, eau, nettoyage des parties communes, domiciliation, entretien des espaces verts) et la taxe foncière. Accès sécurisé 24h/24, fibre optique, 26 places de parking privatives, terrasse. Location en direct propriétaire, **sans frais d'agence**, bail 3/6/9, disponibilité immédiate.
 
 Le plan coté de chaque lot est disponible sur demande — c'est le meilleur moyen de valider une implantation avant même de vous déplacer.
 

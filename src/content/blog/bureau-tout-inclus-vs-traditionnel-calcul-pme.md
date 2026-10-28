@@ -106,11 +106,11 @@ Votre coût réel au m² est donc de **259 €/m²/an**, et non 150 €.
 
 ### Scénario B — Bureau tout inclus, location directe propriétaire
 
-- Loyer tout compris : 1 600 €/mois → **19 200 € HT/an**
+- Montant mensuel tout compris : 1 600 €/mois → **19 200 € HT/an**
 - Frais d'agence : **0 €**
 - Dépôt de garantie : 3 mois → **4 800 €** (idem récupérable)
 
-Ce loyer inclut par définition tout ce qui est listé au scénario A (charges, énergie, ménage, maintenance, taxe foncière, domiciliation, entretien espaces verts).
+Ce montant inclut par définition tout ce qui est listé au scénario A (charges, énergie, ménage, maintenance, taxe foncière, domiciliation, entretien espaces verts).
 
 **Coût total sur 12 mois : 19 200 €/an, soit 1 600 €/mois.**
 
@@ -167,7 +167,7 @@ Pour la **grande majorité des PME de services (consulting, agences, professions
 
 Attention aux offres qui s'affichent "tout inclus" mais qui ne le sont que partiellement. Posez ces 5 questions avant signature :
 
-1. **La taxe foncière est-elle à ma charge ?** Si oui, ce n'est pas vraiment tout inclus.
+1. **La taxe foncière est-elle comprise dans le montant mensuel annoncé ?** Si elle est refacturée à part en fin d'année, ce n'est pas vraiment tout inclus.
 2. **L'électricité et le chauffage sont-ils inclus ou facturés en sus ?** Certains bailleurs facturent "les consommations réelles" après coup.
 3. **Le ménage est-il inclus pour mon bureau, ou seulement pour les parties communes ?** Nuance importante.
 4. **Y a-t-il des charges de copropriété à payer en plus ?** Parfois "cachées" dans un appel annuel.
@@ -179,10 +179,10 @@ Un bailleur qui répond clairement et par écrit à ces 5 questions est un bon i
 
 Chez MARVHL, notre offre est construite autour du "vraiment tout inclus" :
 
-Chaque loyer mensuel intègre :
+Chaque montant mensuel réunit le loyer, les charges et la taxe foncière, et couvre :
 - **Électricité, chauffage, climatisation neuve** (installation récente, 30 % plus efficace)
 - **Eau** (sanitaires et cuisine)
-- **Ménage des parties communes**
+- **Nettoyage des parties communes**
 - **Entretien des espaces verts**
 - **Taxe foncière**
 - **Domiciliation d'entreprise**
@@ -190,7 +190,7 @@ Chaque loyer mensuel intègre :
 - **Cuisine équipée partagée**, terrasse, vidéosurveillance, accès 24h/7j
 - **Fibre optique raccordée** (abonnement opérateur à votre charge, normal)
 
-**Aucun frais d'agence** (location directe propriétaire). **Aucune charge supplémentaire** en cours d'année. **Bail professionnel 3-6-9 selon accord.**
+**Aucun frais d'agence** (location directe propriétaire). **Aucune charge supplémentaire** en cours d'année. **Bail 3-6-9.**
 
 Pour une PME qui cherche entre 20 et 143 m² à Lormont (20 min de Bordeaux), [organisez une visite](/contact) : 30 minutes suffisent pour comprendre concrètement l'avantage du tout inclus sur votre cas.
 

@@ -92,7 +92,7 @@ En reprenant le tableau : sur une équipe de 10 personnes, les postes réellemen
 
 Un local déjà cloisonné, climatisé, fibré et fonctionnel supprime la ligne aménagement, réduit les journées perdues et permet une prise de possession immédiate.
 
-C'est exactement le positionnement du **Bâtiment Galilée à Lormont**, à 20 minutes du centre de Bordeaux : des lots de 20 à 143 m² disponibles immédiatement, climatisation neuve, fibre optique, parking privatif de 26 places, accès sécurisé 24h/24, cuisine équipée et terrasse. Le loyer inclut électricité, chauffage et climatisation, eau, ménage des parties communes, domiciliation, taxe foncière et entretien des espaces verts. Location en direct propriétaire, **sans frais d'agence**, bail 3/6/9.
+C'est exactement le positionnement du **Bâtiment Galilée à Lormont**, à 20 minutes du centre de Bordeaux : des lots de 20 à 143 m² disponibles immédiatement, climatisation neuve, fibre optique, parking privatif de 26 places, accès sécurisé 24h/24, cuisine équipée et terrasse. Un seul montant mensuel réunit le loyer, les charges (électricité, chauffage et climatisation, eau, nettoyage des parties communes, domiciliation, entretien des espaces verts) et la taxe foncière. Location en direct propriétaire, **sans frais d'agence**, bail 3/6/9.
 
 **Visites du lundi au vendredi de 9h à 18h, samedi sur rendez-vous.**
 📧 contact.marvhl@gmail.com · 📱 07 56 80 64 04 (téléphone et WhatsApp)

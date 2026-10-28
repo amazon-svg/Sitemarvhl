@@ -55,7 +55,7 @@ export const lots: Lot[] = [
     description:
       "Le moins cher des trois bureaux privatifs du 1er étage : 21 m² climatisés, accès sécurisé 24h/7j, pour un professionnel seul, un binôme ou une petite équipe de 3.",
     longDescription:
-      "Ce bureau de 21 m² occupe le 1er étage du bâtiment Galilée, aux côtés de deux bureaux voisins de taille comparable (20 et 22 m²) — c'est le moins cher des trois. Climatisation, fibre optique (abonnement à la charge du locataire), contrôle d'accès et vidéosurveillance assurent un usage autonome 24h/24 et 7j/7. Livré non meublé, pour un aménagement libre. Loyer tout compris : électricité et eau des communs, ménage des parties communes, taxe foncière, domiciliation, entretien des espaces verts. Location directe auprès du propriétaire, sans frais d'agence ni intermédiaire.",
+      "Ce bureau de 21 m² occupe le 1er étage du bâtiment Galilée, aux côtés de deux bureaux voisins de taille comparable (20 et 22 m²) — c'est le moins cher des trois. Climatisation, fibre optique (abonnement à la charge du locataire), contrôle d'accès et vidéosurveillance assurent un usage autonome 24h/24 et 7j/7. Livré non meublé, pour un aménagement libre. Un seul montant mensuel tout compris : 358 € HT (loyer 255 €, charges 61 €, taxe foncière 42 €), qui couvre l'électricité et l'eau des communs, le nettoyage des parties communes, la domiciliation et l'entretien des espaces verts. Bail 3-6-9, dépôt de garantie de 3 mois de loyer. Location directe auprès du propriétaire, sans frais d'agence ni intermédiaire.",
     features: [
       "Climatisation",
       "Fibre optique (abonnement à la charge du locataire)",
@@ -74,12 +74,18 @@ export const lots: Lot[] = [
       "Entretien des espaces verts",
       "Taxe foncière",
     ],
+    charges: [
+      { label: "Charges (35 € HT/m²/an)", value: "≈ 61 € HT/mois" },
+      { label: "Taxe foncière (24 € HT/m²/an)", value: "≈ 42 € HT/mois" },
+      { label: "Total mensuel tout compris", value: "≈ 358 € HT/mois" },
+      { label: "Dépôt de garantie", value: "3 mois de loyer" },
+    ],
     noEngagement: false,
     transport: "Tram ligne A – arrêt Les Lauriers",
     images: [lotB101Img],
     metaTitle: "Bureau privatif 21 m² à louer Lormont (33310) R+1 – Bâtiment Galilée | MARVHL",
     metaDescription:
-      "Bureau privatif 21 m² climatisé, accès 24h/7j, loyer tout inclus sans frais d'agence. 255 € HT/mois. Bâtiment Galilée, 12 rue Cantelaudette, Lormont.",
+      "Bureau privatif 21 m² climatisé, accès 24h/7j, 358 € HT/mois tout compris, sans frais d'agence. Bâtiment Galilée, 12 rue Cantelaudette, Lormont.",
   },
   {
     id: 9,
@@ -97,7 +103,7 @@ export const lots: Lot[] = [
     description:
       "Bureau privatif de 20 m² au 1er étage, lumineux avec fenêtre, grands placards de rangement et climatisation. Idéal pour un professionnel libéral ou un binôme.",
     longDescription:
-      "Bureau privatif de 20 m² situé au 1er étage du bâtiment Galilée, lumineux grâce à sa fenêtre et doté de grands placards de rangement intégrés. Climatisé, raccordé à la fibre optique (abonnement à la charge du locataire), sécurisé par contrôle d'accès et vidéosurveillance, accessible 24h/7j. Livré non meublé pour vous laisser libre d'aménager l'espace selon vos besoins. Le loyer est tout compris (électricité des communs, eau, ménage des parties communes, taxe foncière, domiciliation, entretien des espaces verts). Location directe propriétaire — pas de frais d'agence, pas d'intermédiaire.",
+      "Bureau privatif de 20 m² situé au 1er étage du bâtiment Galilée, lumineux grâce à sa fenêtre et doté de grands placards de rangement intégrés. Climatisé, raccordé à la fibre optique (abonnement à la charge du locataire), sécurisé par contrôle d'accès et vidéosurveillance, accessible 24h/7j. Livré non meublé pour vous laisser libre d'aménager l'espace selon vos besoins. Un seul montant mensuel tout compris : 343 € HT (loyer 245 €, charges 58 €, taxe foncière 40 €), qui couvre l'électricité et l'eau des communs, le nettoyage des parties communes, la domiciliation et l'entretien des espaces verts. Bail 3-6-9, dépôt de garantie de 3 mois de loyer. Location directe propriétaire — pas de frais d'agence, pas d'intermédiaire.",
     features: [
       "Climatisation",
       "Fenêtre – lumière naturelle",
@@ -118,12 +124,18 @@ export const lots: Lot[] = [
       "Entretien des espaces verts",
       "Taxe foncière",
     ],
+    charges: [
+      { label: "Charges (35 € HT/m²/an)", value: "≈ 58 € HT/mois" },
+      { label: "Taxe foncière (24 € HT/m²/an)", value: "≈ 40 € HT/mois" },
+      { label: "Total mensuel tout compris", value: "≈ 343 € HT/mois" },
+      { label: "Dépôt de garantie", value: "3 mois de loyer" },
+    ],
     noEngagement: false,
     transport: "Tram ligne A – arrêt Les Lauriers",
     images: [lotB102Img],
     metaTitle: "Bureau privatif 20 m² à louer Lormont (33310) R+1 – Bâtiment Galilée | MARVHL",
     metaDescription:
-      "Bureau privatif 20 m² lumineux, climatisé, grands placards, loyer tout inclus sans frais d'agence. 245 € HT/mois. Bâtiment Galilée, Lormont.",
+      "Bureau privatif 20 m² lumineux, climatisé, grands placards, 343 € HT/mois tout compris, sans frais d'agence. Bâtiment Galilée, Lormont.",
   },
   {
     id: 13,
@@ -141,7 +153,7 @@ export const lots: Lot[] = [
     description:
       "Le plus grand des trois bureaux privatifs du 1er étage : 22 m² climatisés, accès sécurisé 24h/7j, pour un professionnel libéral, une startup ou une équipe jusqu'à 3 personnes.",
     longDescription:
-      "Avec 22 m², c'est le plus spacieux des trois bureaux du 1er étage du bâtiment Galilée (aux côtés des 20 et 21 m² voisins). Climatisé, raccordé à la fibre optique (abonnement à la charge du locataire), sécurisé par contrôle d'accès et vidéosurveillance, accessible 24h/24 et 7j/7. Livré non meublé pour un aménagement libre. Loyer tout compris : électricité et eau des communs, ménage des parties communes, taxe foncière, domiciliation, entretien des espaces verts. Location directe propriétaire — pas de frais d'agence, pas d'intermédiaire.",
+      "Avec 22 m², c'est le plus spacieux des trois bureaux du 1er étage du bâtiment Galilée (aux côtés des 20 et 21 m² voisins). Climatisé, raccordé à la fibre optique (abonnement à la charge du locataire), sécurisé par contrôle d'accès et vidéosurveillance, accessible 24h/24 et 7j/7. Livré non meublé pour un aménagement libre. Un seul montant mensuel tout compris : 378 € HT (loyer 270 €, charges 64 €, taxe foncière 44 €), qui couvre l'électricité et l'eau des communs, le nettoyage des parties communes, la domiciliation et l'entretien des espaces verts. Bail 3-6-9, dépôt de garantie de 3 mois de loyer. Location directe propriétaire — pas de frais d'agence, pas d'intermédiaire.",
     features: [
       "Climatisation",
       "Fibre optique (abonnement à la charge du locataire)",
@@ -160,12 +172,18 @@ export const lots: Lot[] = [
       "Entretien des espaces verts",
       "Taxe foncière",
     ],
+    charges: [
+      { label: "Charges (35 € HT/m²/an)", value: "≈ 64 € HT/mois" },
+      { label: "Taxe foncière (24 € HT/m²/an)", value: "≈ 44 € HT/mois" },
+      { label: "Total mensuel tout compris", value: "≈ 378 € HT/mois" },
+      { label: "Dépôt de garantie", value: "3 mois de loyer" },
+    ],
     noEngagement: false,
     transport: "Tram ligne A – arrêt Les Lauriers",
     images: [lotB103Img],
     metaTitle: "Bureau privatif 22 m² à louer Lormont (33310) R+1 – Bâtiment Galilée | MARVHL",
     metaDescription:
-      "Bureau privatif 22 m² climatisé, accès 24h/7j, loyer tout inclus sans frais d'agence. 270 € HT/mois. Bâtiment Galilée, 12 rue Cantelaudette, Lormont.",
+      "Bureau privatif 22 m² climatisé, accès 24h/7j, 378 € HT/mois tout compris, sans frais d'agence. Bâtiment Galilée, 12 rue Cantelaudette, Lormont.",
   },
   {
     id: 10,
@@ -183,7 +201,7 @@ export const lots: Lot[] = [
     description:
       "Open space lumineux de 95 m² en rez-de-chaussée, modulable, climatisé. Idéal pour les startups en croissance et les équipes dynamiques. Disponible immédiatement.",
     longDescription:
-      "Open-space de 95 m² au rez-de-chaussée du bâtiment Galilée pour 10 à 15 postes. Accès PMR. Climatisé, lumineux, modulable selon l'organisation de votre équipe. Le bâtiment propose un parking privatif de 26 places, une cuisine équipée (réfrigérateur, micro-ondes, lave-vaisselle), une terrasse, la fibre optique, un contrôle d'accès et une vidéosurveillance 24h/7j. Loyer tout compris (électricité des communs, eau, ménage, taxe foncière, domiciliation, entretien des espaces verts). Location directe propriétaire — pas de frais d'agence.",
+      "Open-space de 95 m² au rez-de-chaussée du bâtiment Galilée pour 10 à 15 postes. Accès PMR. Climatisé, lumineux, modulable selon l'organisation de votre équipe. Le bâtiment propose un parking privatif de 26 places, une cuisine équipée (réfrigérateur, micro-ondes, lave-vaisselle), une terrasse, la fibre optique, un contrôle d'accès et une vidéosurveillance 24h/7j. Un seul montant mensuel tout compris : 1 617 € HT (loyer 1 150 €, charges 277 €, taxe foncière 190 €), qui couvre l'électricité et l'eau des communs, le nettoyage des parties communes, la domiciliation et l'entretien des espaces verts. Bail 3-6-9, dépôt de garantie de 3 mois de loyer. Location directe propriétaire — pas de frais d'agence.",
     features: [
       "Climatisation neuve",
       "Lumineux – grands espaces ouverts",
@@ -206,15 +224,17 @@ export const lots: Lot[] = [
       "Taxe foncière",
     ],
     charges: [
-      { label: "Charges", value: "35 € HT/m²/an" },
-      { label: "Impôt foncier (à la charge du preneur)", value: "24 € HT/m²/an" },
+      { label: "Charges (35 € HT/m²/an)", value: "≈ 277 € HT/mois" },
+      { label: "Taxe foncière (24 € HT/m²/an)", value: "≈ 190 € HT/mois" },
+      { label: "Total mensuel tout compris", value: "≈ 1 617 € HT/mois" },
+      { label: "Dépôt de garantie", value: "3 mois de loyer" },
     ],
     noEngagement: false,
     transport: "Tram ligne A – arrêt Les Lauriers",
     images: [lotOS1Img1, lotOS1Img2, lotOS1Img3],
     metaTitle: "Open Space 95 m² à louer Lormont (33310) RDC – Bâtiment Galilée | MARVHL",
     metaDescription:
-      "Open-space 95 m² RDC, 10-15 postes, climatisé, modulable, accès PMR. Loyer tout inclus, sans frais d'agence. 1 150 € HT/mois. Lormont.",
+      "Open-space 95 m² RDC, 10-15 postes, climatisé, modulable, accès PMR. 1 617 € HT/mois tout compris, sans frais d'agence. Lormont.",
   },
   {
     id: 11,
@@ -286,7 +306,7 @@ export const lots: Lot[] = [
     description:
       "2 bureaux communicants de 60 m² au 1er étage, climatisés, lumineux avec grands placards de rangement. Idéal pour une équipe ou deux activités complémentaires. Disponible immédiatement.",
     longDescription:
-      "Deux bureaux contigus et communicants totalisant 60 m² au 1er étage du bâtiment Galilée, louables séparément ou ensemble. Climatisés, lumineux, avec grands placards de rangement intégrés. Le bâtiment dispose d'un parking privatif de 26 places, d'une cuisine équipée (frigo, micro-ondes, lave-vaisselle), d'une terrasse, de la fibre optique, d'un contrôle d'accès et d'une vidéosurveillance 24h/7j. Loyer tout compris (électricité des communs, eau, ménage, taxe foncière, domiciliation, entretien des espaces verts). Location directe propriétaire — pas de frais d'agence.",
+      "Deux bureaux contigus et communicants totalisant 60 m² au 1er étage du bâtiment Galilée, louables séparément ou ensemble. Climatisés, lumineux, avec grands placards de rangement intégrés. Le bâtiment dispose d'un parking privatif de 26 places, d'une cuisine équipée (frigo, micro-ondes, lave-vaisselle), d'une terrasse, de la fibre optique, d'un contrôle d'accès et d'une vidéosurveillance 24h/7j. Un seul montant mensuel tout compris : 1 020 € HT (loyer 725 €, charges 175 €, taxe foncière 120 €), qui couvre l'électricité et l'eau des communs, le nettoyage des parties communes, la domiciliation et l'entretien des espaces verts. Bail 3-6-9, dépôt de garantie de 3 mois de loyer. Location directe propriétaire — pas de frais d'agence.",
     features: [
       "2 bureaux communicants",
       "Climatisation neuve",
@@ -312,15 +332,17 @@ export const lots: Lot[] = [
       "Taxe foncière",
     ],
     charges: [
-      { label: "Charges", value: "35 € HT/m²/an" },
-      { label: "Impôt foncier (à la charge du preneur)", value: "24 € HT/m²/an" },
+      { label: "Charges (35 € HT/m²/an)", value: "≈ 175 € HT/mois" },
+      { label: "Taxe foncière (24 € HT/m²/an)", value: "≈ 120 € HT/mois" },
+      { label: "Total mensuel tout compris", value: "≈ 1 020 € HT/mois" },
+      { label: "Dépôt de garantie", value: "3 mois de loyer" },
     ],
     noEngagement: false,
     transport: "Tram ligne A – arrêt Les Lauriers",
     images: [lotB104Img1, lotB104Img2],
     metaTitle: "Bureaux 60 m² à louer Lormont (33310) R+1 – Bâtiment Galilée | MARVHL",
     metaDescription:
-      "2 bureaux communicants 60 m², 1er étage, climatisés, grands placards. Loyer tout inclus, sans frais d'agence. 725 € HT/mois. 12 rue Cantelaudette, Lormont.",
+      "2 bureaux communicants 60 m², 1er étage, climatisés, grands placards. 1 020 € HT/mois tout compris, sans frais d'agence. 12 rue Cantelaudette, Lormont.",
   },
   {
     id: 14,

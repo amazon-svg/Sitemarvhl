@@ -139,9 +139,9 @@ export function Building() {
             {[
               {
                 icon: Wallet,
-                title: "Un seul loyer, tout est compris",
+                title: "Un seul montant mensuel, tout est compris",
                 body:
-                  "Électricité, chauffage, climatisation neuve, eau, ménage des parties communes, entretien des espaces verts, taxe foncière, domiciliation : tout est inclus dans votre loyer mensuel. Budget prévisible, zéro surprise.",
+                  "Électricité, chauffage, climatisation neuve, eau, nettoyage des parties communes, entretien des espaces verts, domiciliation et taxe foncière : tout est réuni avec le loyer en un seul montant mensuel. Budget prévisible, zéro surprise.",
               },
               {
                 icon: Users,
@@ -265,7 +265,7 @@ export function Building() {
         </div>
       </section>
 
-      {/* ── Tout ce qui est compris dans votre loyer ── */}
+      {/* ── Tout ce qui est compris dans votre montant mensuel ── */}
       <section className="py-16 bg-white" aria-labelledby="section-inclus">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-10">
@@ -276,11 +276,11 @@ export function Building() {
               id="section-inclus"
               className="text-2xl sm:text-3xl font-bold text-[#0F2D52] mb-4"
             >
-              Tout ce qui est compris dans votre loyer
+              Tout ce qui est compris dans votre montant mensuel
             </h2>
             <p className="text-gray-600 leading-relaxed">
-              L'ensemble des charges suivantes est inclus dans votre loyer
-              mensuel. Aucune charge supplémentaire ne viendra s'ajouter en
+              L'ensemble des charges suivantes est inclus dans votre montant
+              mensuel (loyer, charges et taxe foncière). Aucune charge supplémentaire ne viendra s'ajouter en
               cours d'année.
             </p>
           </div>
