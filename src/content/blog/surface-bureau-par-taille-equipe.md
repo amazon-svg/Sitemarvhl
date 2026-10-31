@@ -83,7 +83,7 @@ Les lots disponibles à Lormont couvrent l'ensemble des configurations, avec cui
 | Lot | Configuration | Capacité réaliste |
 |---|---|---|
 | Bureaux 1, 2, 3 (R+1) | 20 à 22 m², fermés, climatisation dédiée | 1 à 2 postes |
-| Lot 29-1 / 29-2 (R+1) | 59 m² chacun, contigus, combinables (~118 m²) | 5 à 6 postes par lot |
+| Bureaux 60 m² (R+1) | 2 bureaux contigus et communicants, loués ensemble uniquement | 4 à 6 postes |
 | Open-space R+1 | Plateau ouvert + 2 bureaux privatifs intégrés | 8 à 10 postes |
 | Open-space RDC + bureau attenant | 95 m² + 22 m², accès PMR | 9 à 12 postes + bureau de direction |
 | Grand plateau RDC | 143 m², 2 entrées distinctes, accès terrasse | 12 à 15 postes |
